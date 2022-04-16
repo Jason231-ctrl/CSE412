@@ -1,0 +1,491 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    animation: fadein 3s;
+}
+
+section
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #89CFF0;
+    
+    flex-direction: column;
+    overflow: hidden;
+    white-space: nowrap;
+
+}
+
+section .row
+{
+    position: relative;
+    top: -30%;
+    left: -10%;
+    width: 100%;
+    padding: 10px 0;
+    transform: rotate(-30deg);
+    white-space: nowrap;
+}
+
+.logo
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -65%); /*just -65*/
+}
+
+.logoImg
+{
+    height: 45%;
+    width: 45%;    
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-app-region: drag;
+}
+
+.clickImg
+{
+    padding-top: 2%;
+    height: 60%;
+    width: 60%;   
+    opacity: 0;
+    animation:  glowing 5s linear infinite;
+    animation-delay: 4s;
+}
+
+.logoImgActive
+{
+    animation: logoResize 2s;
+    animation-fill-mode: forwards;
+}
+
+.piecies
+{   
+    width: 30px;
+    height: 30px;
+    transition: 1s;
+    filter: brightness(0) invert(.9);
+    padding: 6px 3px;
+    user-select: none;
+    cursor: default;
+}
+
+.piecies:hover
+{
+    transition:  0s;
+    filter: brightness(0) invert(1);
+}
+
+section .row div
+{
+    animation:  animate 23s linear infinite;
+    animation-iteration-count: infinite;
+    animation-delay: -23s;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.GameName
+{
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-app-region: drag;
+}
+
+.loginBackground
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -25%);
+    /*height: 275px;*/
+    width: 375px;
+    border-radius: 25px;
+    background-color: white;
+    animation: loginTransition 2s;
+    animation-delay: .2s;
+    animation-fill-mode: forwards;
+}
+
+.profileEdits
+{
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -20%);
+    animation: pop .4s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+.profImg
+{
+    opacity: 0;
+    width:130px;
+    height:130px;
+    object-fit:cover;
+    border-radius:50%;
+    animation:  fadein .2s, profileEnlarge .5s;
+    animation-delay: 2s, 3.5s;
+    animation-fill-mode: forwards;
+}
+
+.exitButton
+{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+}
+
+.exitButton:hover
+{
+    filter: opacity(.8);
+}
+
+.loginInput { 
+    width: 80%;
+    height: 5px;
+    border:2px solid #e1e5ee;
+    border-radius: 15px;
+    font-size: 1.4rem;
+    color:black;
+    outline: none;
+    padding: 1.25rem;
+    background: white;
+}
+
+.loginInput:hover
+{
+    border-color: #adffff;
+}
+
+.loginInput:focus
+{
+    border-color: #18ffff;
+}
+
+.playerTransitionAnimation
+{
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -21%);
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    animation:  pop 1s,
+                profileTransitionClose 1.25s linear;
+    animation-delay: .45s, 2s;
+    animation-fill-mode: forwards;
+}
+
+.loginButton
+{
+    opacity: 0;
+    position: absolute;
+    top: 130.75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background:none;
+    animation: fadein 2s;
+    animation-delay: 9s;
+    animation-fill-mode: forwards;
+}
+
+.userCreationButtonAnimation
+{
+    opacity: 0;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 150px;
+    height: 25px;
+    background: white;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    animation: halfGlow 2s linear;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+}
+
+.userCreationButtonAnimation:hover
+{
+    background: whitesmoke;
+}
+
+.userCreationBackground
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 375px;
+    border-radius: 25px;
+    background-color: white;
+    animation: userCreationExpansionAnimation 1s ease-out;
+    animation-fill-mode: forwards;
+}
+
+.accountCreationButton
+{
+    opacity: 0;
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40px;
+    background: white;
+    animation: fadein 10s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+}
+
+.accountCreationButton:hover
+{
+    background: whitesmoke;
+}
+
+.accountCreationInputsAnimation
+{
+    opacity: 0;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, -50%);    
+    padding: 1.5rem;
+    animation: pop 1s ease-out;
+    animation-fill-mode: forwards;
+}
+.accountCreationInputsText
+{
+    width: 650px;
+    height: 5px;
+    border:2px solid #e1e5ee;
+    border-radius: 15px;
+    font-size: 1.4rem;
+    color:black;
+    outline: none;
+    padding: 1.25rem;
+    background: white;
+}
+.accountCreationInputsLabel
+{
+    font-size: 1.8rem;
+}
+
+/*-------Used Online-------*/
+span{
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    height: 55px;
+    margin: 0 15px;
+    perspective: 1000px;
+    
+  }
+  span a{
+    font-size: 19px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+    
+  }
+  span a:before,
+  span a:after{
+    position: absolute;
+    content: "LOGIN";
+    height: 55px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  span a:before{
+    color: #fff;
+    background: #000;
+    transform: rotateY(0deg) translateZ(25px);
+  }
+  span a:after{
+    color: #000;
+    background: #e1e5ee;
+    transform: rotateX(90deg) translateZ(25px);
+  }
+  span a:hover{
+    transform: translateZ(-25px) rotateX(-90deg);
+  }
+/*-------Used Online-------*/
+
+/* Moving labels didnt work replaced with 
+.profileInput
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: "Convergence", sans-serif;
+    font-size: 1.4rem;
+    transform: translate(-113.625%, 110%);
+    padding: 0 0.5rem;
+    cursor:text;
+    background-color: white;
+
+}
+
+
+.profilePasswordInput
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: "Convergence", sans-serif;
+    font-size: 1.4rem;
+    transform: translate(-118%, 370%);
+    padding: 0 0.5rem;
+    cursor:text;
+    background-color: white;
+
+}
+*/
+
+@keyframes animate {
+    0%
+    {
+        transform: translateX(0%);
+    }
+    100%
+    {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes glowing {
+    0%
+    {
+        opacity: 0;
+    }
+    50%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+    }
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes logoResize {
+    0%
+    {
+        transform: scale(1) translateY(0%);
+    }
+    100%
+    {
+        transform: scale(0.55) translateY(-60%);
+    }
+}
+
+@keyframes loginTransition {
+    0%
+    {
+        height: 0;
+    }
+    100%
+    {
+        height: 350px;
+    }
+}
+
+
+@keyframes profileEnlarge {
+    0%
+    {
+        transform: scale(1);
+    }
+    50%
+    {
+        transform: scale(1.1);
+    }
+    100%
+    {
+        transform: scale(1);
+    }
+}
+
+@keyframes pop {
+    0%
+    {
+        opacity: 0;
+    }
+    99%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}
+
+@keyframes profileTransitionClose {
+    0%
+    {
+        width: 300px;
+    }
+    100%
+    {
+        width: 0;
+    }
+}
+
+@keyframes halfGlow {
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 80%;
+    }
+}
+
+@keyframes userCreationExpansionAnimation{
+    0%
+    {
+        width: 375px;
+    }
+    100%
+    {
+        width: 800px;;
+    }
+}
