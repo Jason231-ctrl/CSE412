@@ -1,7 +1,5 @@
 # CSE 412 Project 
 
-## ChessDB
-
 This is working node app using the start/board frontend templates. It also includes a working API for the player DB table. 
 
 ### Setting up local project
