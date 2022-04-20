@@ -18,3 +18,6 @@ const pool = new Pool({
     database: $(local database) 
 })
 ```
+
+## Group Members
+- Jason
