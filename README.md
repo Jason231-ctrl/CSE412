@@ -21,7 +21,7 @@ module.exports = {
 (This file will be in .gitignore, meaning you can keep it updated in your environment without worrying about constantly updating after pulls.)
 
 ## Running the app
-This space should be updated with dependencies once finished, but to run the app, use:
+This space should be updated with dependencies once finished, but to run the app, just use:
 ```bash
 node app
 ```
