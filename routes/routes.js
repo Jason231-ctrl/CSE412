@@ -24,7 +24,7 @@ router.post('/players', async (req, res) => {
     } catch (err) {
         console.error(err.message);
     }
-    res.redirect('/');
+    res.redirect('/admin');
 });
 
 //get a player
@@ -55,7 +55,7 @@ router.put('/players/:id', async (req, res) => {
     } catch (err) {
         console.error(err);
     }
-    res.redirect('/');
+    res.redirect('/admin');
 });
 
 //delete a player
@@ -66,7 +66,7 @@ router.delete('/players/:id', async (req, res) => {
     } catch (err) {
         console.error(err);
     }
-    res.redirect('/');
+    res.redirect('/admin');
 });
 
 // DASHBOARD Page
