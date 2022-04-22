@@ -11,11 +11,11 @@ psql -d $(local database) -U $(local user) -f chessdb.sql
 Then update /dbcreds.js with your database credentials to finish setup:
 ```javascript
 module.exports = {
-    user: "postgres",
-    password: process.env.PG_ROOT,
+    user: $(local user),
+    password: $(local password),
     host: "localhost",
-    port: 5432,
-    database: "ChessDB"
+    port: $(local port),
+    database: $(local database)
 };
 ```
 This file will be in .gitignore, meaning you can keep it updated in your environment without worrying about constantly updating after pulls.
