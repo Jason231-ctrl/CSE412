@@ -8,16 +8,17 @@ You should be able to read the DB dump into your local environment using:
 psql -d $(local database) -U $(local user) -f chessdb.sql
 ```
 
-Then update /src/server/db.js to your configuration:
+Then update /dbcreds.js with your database credentials to finish your configuration:
 ```javascript
-const pool = new Pool({
-    user: $(local user),
-    password: $(local password),
+module.exports = {
+    user: "postgres",
+    password: process.env.PG_ROOT,
     host: "localhost",
-    port: $(local port), // usually 5432
-    database: $(local database) 
-})
+    port: 5432,
+    database: "ChessDB"
+};
 ```
+This file will be in .gitignore, meaning you can keep it updated in your environment without worrying about uploading sensitive info. 
 
 ## Group Members
 - Jason
