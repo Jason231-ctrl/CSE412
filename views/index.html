@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div>
+    <h1>ChessDB</h1>
+
+    <form action="/players" method="POST">
+        <label>Enter Username:</label>
+        <input type="text" placeholder="username" id="player_name" name="player_name" required>
+        <button type="submit">Enter Player</button>
+    </form>
+
+    <ul>
+        {% for player in players %}
+        <li>
+            {{ player.player_id }}) {{ player.player_name }}
+            <form action="/players/{{ player.player_id }}?_method=DELETE" method="post">
+                <input type="submit" value="Delete">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}
