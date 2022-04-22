@@ -8,7 +8,7 @@ You should be able to read the DB dump into your local environment using:
 psql -d $(local database) -U $(local user) -f chessdb.sql
 ```
 
-Then update /dbcreds.js with your database credentials to finish your configuration:
+Then update /dbcreds.js with your database credentials to finish setup:
 ```javascript
 module.exports = {
     user: "postgres",
