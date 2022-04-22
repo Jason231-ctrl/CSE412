@@ -18,7 +18,13 @@ module.exports = {
     database: $(local database)
 };
 ```
-This file will be in .gitignore, meaning you can keep it updated in your environment without worrying about constantly updating after pulls.
+(This file will be in .gitignore, meaning you can keep it updated in your environment without worrying about constantly updating after pulls.)
+
+## Running
+This space should be updated with dependencies once finished, but to run the app, use:
+```bash
+node app
+```
 
 ## Group Members
 - Jason
