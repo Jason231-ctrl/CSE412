@@ -3,6 +3,7 @@ const path = require('path');
 const cors = require('cors');
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const { response } = require('express');
 const routes = require('./routes/routes');
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.json()); //req.body
 app.use(express.static(process.env.PWD + '/'));
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use('/', routes);
 
