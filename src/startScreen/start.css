@@ -299,6 +299,12 @@ section .row div
     animation-fill-mode: forwards;
 }
 
+#accountCreationInputs{
+    text-align: center;
+    transform: translate(-50%, -15%);
+    
+}
+
 .accountCreationButton:hover
 {
     background: whitesmoke;
@@ -319,6 +325,7 @@ section .row div
 }
 .accountCreationInputsText
 {
+    bottom: 20%;
     width: 650px;
     height: 5px;
     border:2px solid #e1e5ee;
@@ -535,4 +542,19 @@ span{
     to {
         left: 0;
     }
+}
+
+#noUserFound
+{
+    visibility: hidden;
+    color: red;
+    font-size: medium;
+}
+
+#userExists
+{
+
+    visibility: hidden;
+    color: red;
+    font-size: medium;
 }

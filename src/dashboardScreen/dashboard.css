@@ -126,30 +126,14 @@ section .row div
     }
 }
 
-.column{
-    float: left;
-    height: 300px;
-}
-.left {
-    width: 50%;
-}
-.right {
-    width: 50%;
-}
-.rowed:after
-{
-    content: "";
-    display: table;
-    clear: both;
-}
-
 #playerCard
 {
-    position: relative;
-    top: 25%;
-    left: 25%;
-    height: 150%;
-    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(55%, -50%);
+    height: 70%;
+    width: 25%;
     border-radius: 30px;
     background-color: whitesmoke;
     box-shadow: 12px 12px 2px 1px gray;
@@ -167,14 +151,15 @@ section .row div
 
 #newGameButton
 {
-    position: relative;
-    top: 70%;
-    left: 15%;
-    height: 60%;
-    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 180px;
+    width: 180px;
     border-radius: 30px;
     background-color: whitesmoke;
-    box-shadow: 12px 12px 2px 1px gray;
+    box-shadow: 0px 12px 0px 0px gray;
     text-align: center;
 }
 
@@ -187,12 +172,12 @@ section .row div
 
 #newGameButton:hover
 {
-    box-shadow: 12px 12px 2px 1px #65cfcf;
+    box-shadow: 0px 12px 0px 0px #65cfcf;
 }
 
 .newGameTransition
 {
-    animation: newGameZoom 4.5s ease-in, newGameCenter 4.5s forwards, newGameCenter2 4.5s forwards;
+    animation: newGameZoom 4.5s ease-in;
     animation-fill-mode: forwards;
 }
 
@@ -205,32 +190,36 @@ section .row div
     }
 }
 
-@keyframes newGameCenter {
-    from {
-        transform: translateX(0%);
-    }
-    to {
-        transform: translateX(5%);
-    }
-}
-
-@keyframes newGameCenter2 {
-    from {
-        transform: translateY(0%);
-    }
-    to {
-        transform: translateY(5%);
-    }
-}
 
 #currentGames
 {
     position: absolute;
-    top: 20%;
-    left: 35%;
-    height: 60%;
-    width: 20%;
-    border:2px solid;
+    top: 50%;
+    left: 11%;
+    transform: translateY(-50%);
+    height: 70%;
+    width: 25%;
+    border-radius: 30px;
+    background-color: whitesmoke;
+    box-shadow: -12px 12px 2px 1px gray;
+    text-align: center;
+    overflow: scroll;
+}
+
+#matches
+{
+    margin-top: 10%;
+    position: relative;
+    text-align: center;
+    left: 8%;
+    height: 10%;
+    width: 85%;
     border-radius: 25px;
     background-color: white;
+    box-shadow: -8px 8px 2px 1px gray;
+
+}
+#matches:hover
+{
+    box-shadow: -8px 8px 2px 1px #65cfcf;
 }

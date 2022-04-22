@@ -21,20 +21,17 @@ function continueLogin()
 document.getElementById("login").addEventListener("click", nextScreen);
 function nextScreen()
 {
-    /*window.open("../boardScreen/index.html", "_self")*/
-}
-
-document.getElementById("login").addEventListener("click", nextScreen);
-function nextScreen()
-{
     var authenticationCheck = false;
-    if(authenticationCheck = true){
+    if(authenticationCheck == false){ /* currently able to bypas */
         document.getElementById("top").classList.add("topIntroAnimation");
         document.getElementById("middle").classList.add("middleIntroAnimation");
         document.getElementById("bottom").classList.add("bottomIntroAnimation");
         setTimeout(() => {
             window.open("../dashboardScreen/dashboard.html", "_self");
         },1200);
+    }
+    else{
+        document.getElementById("noUserFound").style.visibility = "visible";
     }
 }
 
@@ -45,6 +42,7 @@ function userCreation()
     document.getElementById("profile").style.visibility = "hidden";
     document.getElementById("userCreationButton").style.visibility = "hidden";
     document.getElementById("login").style.visibility = "hidden";
+    document.getElementById("noUserFound").style.visibility = "hidden";
     document.getElementById("accountCreation").classList.add("accountCreationButton");
     document.getElementById("newUsername").classList.add("accountCreationInputsText");
     document.getElementById("newPassword").classList.add("accountCreationInputsText");
@@ -55,5 +53,19 @@ function userCreation()
 document.getElementById("accountCreation").addEventListener("click", newAccount);
 function newAccount()
 {
+
     /*document.getElementById("newUsername").value;*/
+    /* add api to insert new user to database*/
+    var userExist = true;
+    if(userExist == false){
+        document.getElementById("top").classList.add("topIntroAnimation");
+        document.getElementById("middle").classList.add("middleIntroAnimation");
+        document.getElementById("bottom").classList.add("bottomIntroAnimation");
+        setTimeout(() => {
+            window.open("../dashboardScreen/dashboard.html", "_self");
+        },1200);
+    }
+    else{
+        document.getElementById("userExists").style.visibility = "visible";
+    }
 }
