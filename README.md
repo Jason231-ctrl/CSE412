@@ -22,3 +22,6 @@ This file will be in .gitignore, meaning you can keep it updated in your environ
 
 ## Group Members
 - Jason
+- Anthony
+- Maddie
+- Brendan
