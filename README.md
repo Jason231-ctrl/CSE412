@@ -18,7 +18,7 @@ module.exports = {
     database: "ChessDB"
 };
 ```
-This file will be in .gitignore, meaning you can keep it updated in your environment without worrying about uploading sensitive info. 
+This file will be in .gitignore, meaning you can keep it updated in your environment without worrying about constantly updating after pulls.
 
 ## Group Members
 - Jason
