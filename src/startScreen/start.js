@@ -9,7 +9,6 @@ function continueLogin()
     document.getElementById("profile").classList.add("profileEdits");
     document.getElementById("profilePicture").classList.add("profImg");
     document.getElementById("username").classList.add("loginInput");
-    document.getElementById("password").classList.add("loginInput");
     document.getElementById("playerTransition").classList.add("playerTransitionAnimation");
     document.getElementById("login").classList.add("loginButton");
     document.getElementById("userCreationButton").classList.add("userCreationButtonAnimation");
@@ -22,13 +21,21 @@ function continueLogin()
 document.getElementById("login").addEventListener("click", nextScreen);
 function nextScreen()
 {
-    window.open("../boardScreen/index.html", "_self")
+    /*window.open("../boardScreen/index.html", "_self")*/
 }
 
-document.getElementById("accountCreation").addEventListener("click", nextScreen);
+document.getElementById("login").addEventListener("click", nextScreen);
 function nextScreen()
 {
-    window.open("../boardScreen/index.html", "_self")
+    var authenticationCheck = false;
+    if(authenticationCheck = true){
+        document.getElementById("top").classList.add("topIntroAnimation");
+        document.getElementById("middle").classList.add("middleIntroAnimation");
+        document.getElementById("bottom").classList.add("bottomIntroAnimation");
+        setTimeout(() => {
+            window.open("../dashboardScreen/dashboard.html", "_self");
+        },1200);
+    }
 }
 
 document.getElementById("userCreationButton").addEventListener("click", userCreation);
@@ -43,4 +50,10 @@ function userCreation()
     document.getElementById("newPassword").classList.add("accountCreationInputsText");
     document.getElementById("newEmail").classList.add("accountCreationInputsText");
     document.getElementById("accountCreationInputs").classList.add("accountCreationInputsAnimation");
+}
+
+document.getElementById("accountCreation").addEventListener("click", newAccount);
+function newAccount()
+{
+    /*document.getElementById("newUsername").value;*/
 }
