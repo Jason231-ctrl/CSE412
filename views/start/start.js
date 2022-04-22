@@ -27,7 +27,7 @@ function nextScreen()
         document.getElementById("middle").classList.add("middleIntroAnimation");
         document.getElementById("bottom").classList.add("bottomIntroAnimation");
         setTimeout(() => {
-            window.open("../dashboard/dashboard.html", "_self");
+            window.open("/dashboard", "_self");
         },1200);
     }
     else{
@@ -62,7 +62,7 @@ function newAccount()
         document.getElementById("middle").classList.add("middleIntroAnimation");
         document.getElementById("bottom").classList.add("bottomIntroAnimation");
         setTimeout(() => {
-            window.open("../dashboard/dashboard.html", "_self");
+            window.open("/dashboard", "_self");
         },1200);
     }
     else{

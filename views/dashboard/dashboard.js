@@ -3,7 +3,7 @@ function newGame()
 {
     document.getElementById("newGameIcon").classList.add("newGameTransition");
     setTimeout(() => {
-        window.open("../board/index.html", "_self");
+        window.open("/board", "_self");
     },4000);
 }
 
@@ -12,7 +12,7 @@ function existingRound()
 {
     document.getElementById("newGameIcon").classList.add("newGameTransition");
     setTimeout(() => {
-        window.open("../board/index.html", "_self");
+        window.open("/board", "_self");
     },4000);
 }
 
