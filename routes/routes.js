@@ -15,16 +15,34 @@ router.get('/players', async (req, res) => {
 //create a player
 router.post('/players', async (req, res) => {
     try {
-        // console.log(req.body.player_name);
         const { player_name } = req.body;
-        const newPlayer = await pool.query(
+        player = await pool.query(
             'INSERT INTO player (player_name) VALUES($1) RETURNING *', 
             [player_name]
         );
+        const opponent = await pool.query(
+            "SELECT * FROM player WHERE player_name = 'computer';"
+        );
+        res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
+        res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
+        res.render('dashboard/dashboard', {'player': player.rows[0], 'opponent': opponent.rows[0]});
     } catch (err) {
         console.error(err.message);
+        const { player_name } = req.body;
+        if (err.message.startsWith("duplicate key value violates unique constraint")) {
+            player = await pool.query(
+                "SELECT * FROM player WHERE player_name = $1",
+                [player_name]
+            );
+            const opponent = await pool.query(
+                "SELECT * FROM player WHERE player_name = 'computer';"
+            );
+            res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
+            res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
+            res.render('dashboard/dashboard', {'player': player.rows[0], 'opponent': opponent.rows[0]});
+        }
     }
-    res.redirect('/admin');
+    
 });
 
 //get a player
@@ -35,9 +53,12 @@ router.get('/players/:id', async (req, res) => {
             'SELECT * FROM player WHERE player_id = $1', 
             [id]
         );
-        // res.json(player.rows[0]);
+        const opponent = await pool.query(
+            "SELECT * FROM player WHERE player_name = 'computer';"
+        );
         res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
-        res.render('dashboard/dashboard', {'player': player.rows[0]});
+        res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
+        res.render('dashboard/dashboard', {'player': player.rows[0], 'opponent': opponent.rows[0]});
     } catch (err) {
         console.error(err.message);
     }
@@ -71,14 +92,15 @@ router.delete('/players/:id', async (req, res) => {
 
 // DASHBOARD Page
 router.get('/dashboard', async (req, res) => {
-    res.render('dashboard/dashboard', {'player': req.cookies.player});
+    res.render('dashboard/dashboard', {'player': req.cookies.player, 'opponent': opponent.rows[0]});
 });
 
 // BOARD Page
 router.get('/board', async (req, res) => {
-    const latestPlayer = await pool.query('SELECT * FROM player ORDER BY player_id LIMIT 1;');
-    console.log(latestPlayer.rows[0])
-    res.render('board/board', {'player': req.cookies.player});
+    // this should be a board call instead, but gotta handle error-handling of choosing/creating boards
+    const player1 = await pool.query('SELECT * FROM player WHERE player_id = $1;', [req.cookies.player.player_id]);
+    const player2 = await pool.query('SELECT * FROM player WHERE player_id = $1;', [req.cookies.opponent.player_id]);
+    res.render('board/board', {'player': player1.rows[0], 'opponent': player2.rows[0]});
 });
 
 // START PAGE
