@@ -13,6 +13,10 @@
         {% for player in players %}
         <li>
             {{ player.player_id }}) {{ player.player_name }}
+            <form action="/players/{{ player.player_id }}?_method=PUT" method="post">
+                <input type="text" name="player_name" value="{{ player.player_name }}">
+                <input type="submit" value="Edit">
+            </form>
             <form action="/players/{{ player.player_id }}?_method=DELETE" method="post">
                 <input type="submit" value="Delete">
             </form>

@@ -45,13 +45,13 @@ router.get('/players/:id', async (req, res) => {
 //update a player
 router.put('/players/:id', async (req, res) => {
     try {
-        console.log('delete', req.params);
         const { id } = req.params;
         const { player_name } = req.body;
         const updatePlayer = await pool.query(
             'UPDATE player SET player_name = $1 WHERE player_id = $2',
             [player_name, id]
         );
+        res.redirect('/');
     } catch (err) {
         console.error(err);
     }
