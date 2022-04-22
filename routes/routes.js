@@ -23,7 +23,7 @@ router.post('/players', async (req, res) => {
             [player_name]
         );
         const opponent = await pool.query(
-            "SELECT * FROM player WHERE player_name = 'computer';"
+            "SELECT * FROM player WHERE player_name = 'Computer';"
         );
         res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
         res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
@@ -37,7 +37,7 @@ router.post('/players', async (req, res) => {
                 [player_name]
             );
             const opponent = await pool.query(
-                "SELECT * FROM player WHERE player_name = 'computer';"
+                "SELECT * FROM player WHERE player_name = 'Computer';"
             );
             res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
             res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
@@ -56,7 +56,7 @@ router.get('/players/:id', async (req, res) => {
             [id]
         );
         const opponent = await pool.query(
-            "SELECT * FROM player WHERE player_name = 'computer';"
+            "SELECT * FROM player WHERE player_name = 'Computer';"
         );
         res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
         res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
