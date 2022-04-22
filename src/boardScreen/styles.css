@@ -111,7 +111,7 @@ button:hover {
 {
 	position: absolute;
 	top: 25%;
-	left: 25%;
+	left: 35%;
 	scale: 300;
 	animation: onLoadTransition ease-out 1s;
     animation-fill-mode: forwards;

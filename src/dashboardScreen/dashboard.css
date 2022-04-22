@@ -223,3 +223,21 @@ section .row div
 {
     box-shadow: -8px 8px 2px 1px #65cfcf;
 }
+
+#logoImg
+{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    z-index: 1000;
+}
+
+#logoIcon
+{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    height: 44px;
+    width: 44px;
+    z-index: 101;
+}
