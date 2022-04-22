@@ -13,6 +13,8 @@ router.get('/players', async (req, res) => {
 });
 
 //create a player
+// if exists, pick it, else create it and pick it
+// automatically set computer as oponent
 router.post('/players', async (req, res) => {
     try {
         const { player_name } = req.body;
@@ -90,6 +92,15 @@ router.delete('/players/:id', async (req, res) => {
     res.redirect('/admin');
 });
 
+// get boards
+
+// post boards (create a board)
+
+// get board id
+
+// update a board id (update state)
+
+
 // DASHBOARD Page
 router.get('/dashboard', async (req, res) => {
     res.render('dashboard/dashboard', {'player': req.cookies.player, 'opponent': opponent.rows[0]});
@@ -98,6 +109,7 @@ router.get('/dashboard', async (req, res) => {
 // BOARD Page
 router.get('/board', async (req, res) => {
     // this should be a board call instead, but gotta handle error-handling of choosing/creating boards
+    // i think this is assuming new game against computer is chosen
     const player1 = await pool.query('SELECT * FROM player WHERE player_id = $1;', [req.cookies.player.player_id]);
     const player2 = await pool.query('SELECT * FROM player WHERE player_id = $1;', [req.cookies.opponent.player_id]);
     res.render('board/board', {'player': player1.rows[0], 'opponent': player2.rows[0]});
