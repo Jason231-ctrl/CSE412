@@ -16,7 +16,7 @@
 	<!---->
 
   	<div id="header">
-  		<a href="/">Leaderboard</a>
+		<a href="/">Leaderboard</a>
   		<a href="/">History</a>
   		<a href="/">New Player</a>
   		<a href="/">New Game</a>
@@ -160,17 +160,18 @@
     </table>
     
     <div id="pieces">
-    <h2>Pieces Captured by {{ opponent.player_name }}</h2>
-
+    	<h2>Pieces Captured by {{ opponent.player_name }}</h2>
     </div>
     
     <!--end of container-->
     </div>
     <center><button id="submit">Lock in Move</button></center>
+	<form action="/dashboard" method="GET">
+		<input type="submit" value="Dashboard">
+	</form>
 
     <!-- You can also require other files to run in this process -->
-    <script src="/views/board/renderer.js">
-	</script>
+    <script></script>
 	{% endblock %}
   </body>
 </html>

@@ -132,7 +132,15 @@
         <h1>{{ player.player_name }}</h1>
         <h2>Current Games:</h2>
           {% for board in boards %}
-          <div id="matches"> <p> vs {{ board.player2_name }} </p> </div>
+          <div id="matches"> 
+            <p>{{ board.board_id }}) vs {{ board.player2_name }} </p> 
+            <form action="/boards/{{ board.board_id }}" method="GET">
+              <input type="submit" value="Resume">
+            </form>
+            <form action="/boards/{{ board.board_id }}/quit" method="POST">
+              <input type="submit" value="Quit">
+            </form>
+          </div>
           {% endfor %}
       </div>
 
@@ -157,7 +165,7 @@
         <form action="/boards" method="POST">
           <input type="hidden" name="player_id" value="{{ player.player_id }}">
           <input type="hidden" name="opponent_id" value="{{ opponent.player_id }}">
-          <input type="submit">
+          <input type="submit" value="Play Computer">
         </form>
       </div>
 
