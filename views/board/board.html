@@ -24,7 +24,7 @@
   	</div>
 
 	
-    <center><h1>{{ board.board_id }}) {{ player.player_name }} vs {{ opponent.player_name }}</h1>
+    <center><h1>{{ board[0].board_id }}) {{ player.player_name }} vs {{ opponent.player_name }}</h1>
     
     <div id="container">
     
@@ -51,98 +51,98 @@
    		</tr>
    		<tr>
    			<th>8</th>
-    		<td id="A8"><img src="/views/board/piece_images/rook_b.png" alt="black rook" width="50" height="50"></td>
-    		<td id="B8"><img src="/views/board/piece_images/horse_b.png" alt="black horse" width="50" height="50"></td>
-    		<td id="C8"><img src="/views/board/piece_images/bishop_b.png" alt="black bishop" width="50" height="50"></td>
-    		<td id="D8"><img src="/views/board/piece_images/queen_b.png" alt="black queen" width="50" height="50"></td>
-    		<td id="E8"><img src="/views/board/piece_images/king_b.png" alt="black king" width="50" height="50"></td>
-    		<td id="F8"><img src="/views/board/piece_images/bishop_b.png" alt="black bishop" width="50" height="50"></td>
-    		<td id="G8"><img src="/views/board/piece_images/horse_b.png" alt="black horse" width="50" height="50"></td>
-    		<td id="H8"><img src="/views/board/piece_images/rook_b.png" alt="black rook" width="50" height="50"></td>
+    		<td id="A8"><img src="/views/board/piece_images/{{ board_imgs.a8 }}.png" alt="black rook" width="50" height="50"></td>
+    		<td id="B8"><img src="/views/board/piece_images/{{ board_imgs.b8 }}.png" alt="black horse" width="50" height="50"></td>
+    		<td id="C8"><img src="/views/board/piece_images/{{ board_imgs.c8 }}.png" alt="black bishop" width="50" height="50"></td>
+    		<td id="D8"><img src="/views/board/piece_images/{{ board_imgs.d8 }}.png" alt="black queen" width="50" height="50"></td>
+    		<td id="E8"><img src="/views/board/piece_images/{{ board_imgs.e8 }}.png" alt="black king" width="50" height="50"></td>
+    		<td id="F8"><img src="/views/board/piece_images/{{ board_imgs.f8 }}.png" alt="black bishop" width="50" height="50"></td>
+    		<td id="G8"><img src="/views/board/piece_images/{{ board_imgs.g8 }}.png" alt="black horse" width="50" height="50"></td>
+    		<td id="H8"><img src="/views/board/piece_images/{{ board_imgs.h8 }}.png" alt="black rook" width="50" height="50"></td>
    			<th>8</th>
    		</tr>
    		<tr>
    			<th>7</th>
-    		<td id="A7"><img src="/views/board/piece_images/pawn_b.png" alt="black pawn" width="50" height="50"></td>
-    		<td id="B7"><img src="/views/board/piece_images/pawn_b.png" alt="black pawn" width="50" height="50"></td>
-    		<td id="C7"><img src="/views/board/piece_images/pawn_b.png" alt="black pawn" width="50" height="50"></td>
-    		<td id="D7"><img src="/views/board/piece_images/pawn_b.png" alt="black pawn" width="50" height="50"></td>
-    		<td id="E7"><img src="/views/board/piece_images/pawn_b.png" alt="black pawn" width="50" height="50"></td>
-    		<td id="F7"><img src="/views/board/piece_images/pawn_b.png" alt="black pawn" width="50" height="50"></td>
-    		<td id="G7"><img src="/views/board/piece_images/pawn_b.png" alt="black pawn" width="50" height="50"></td>
-    		<td id="H7"><img src="/views/board/piece_images/pawn_b.png" alt="black pawn" width="50" height="50"></td>
+    		<td id="A7"><img src="/views/board/piece_images/{{ board_imgs.a7 }}.png" alt="black pawn" width="50" height="50"></td>
+    		<td id="B7"><img src="/views/board/piece_images/{{ board_imgs.b7 }}.png" alt="black pawn" width="50" height="50"></td>
+    		<td id="C7"><img src="/views/board/piece_images/{{ board_imgs.c7 }}.png" alt="black pawn" width="50" height="50"></td>
+    		<td id="D7"><img src="/views/board/piece_images/{{ board_imgs.d7 }}.png" alt="black pawn" width="50" height="50"></td>
+    		<td id="E7"><img src="/views/board/piece_images/{{ board_imgs.e7 }}.png" alt="black pawn" width="50" height="50"></td>
+    		<td id="F7"><img src="/views/board/piece_images/{{ board_imgs.f7 }}.png" alt="black pawn" width="50" height="50"></td>
+    		<td id="G7"><img src="/views/board/piece_images/{{ board_imgs.g7 }}.png" alt="black pawn" width="50" height="50"></td>
+    		<td id="H7"><img src="/views/board/piece_images/{{ board_imgs.h7 }}.png" alt="black pawn" width="50" height="50"></td>
    			<th>7</th>
    		</tr>
    		<tr>
    			<th>6</th>
-    		<td id="A6"></td>
-    		<td id="B6"></td>
-    		<td id="C6"></td>
-    		<td id="D6"></td>
-    		<td id="E6"></td>
-    		<td id="F6"></td>
-    		<td id="G6"></td>
-    		<td id="H6"></td>
+    		<td id="A6"><img src="/views/board/piece_images/{{ board_imgs.a6 }}.png" width="50" height="50"></td>
+    		<td id="B6"><img src="/views/board/piece_images/{{ board_imgs.b6 }}.png" width="50" height="50"></td>
+    		<td id="C6"><img src="/views/board/piece_images/{{ board_imgs.c6 }}.png" width="50" height="50"></td>
+    		<td id="D6"><img src="/views/board/piece_images/{{ board_imgs.d6 }}.png" width="50" height="50"></td>
+    		<td id="E6"><img src="/views/board/piece_images/{{ board_imgs.e6 }}.png" width="50" height="50"></td>
+    		<td id="F6"><img src="/views/board/piece_images/{{ board_imgs.f6 }}.png" width="50" height="50"></td>
+    		<td id="G6"><img src="/views/board/piece_images/{{ board_imgs.g6 }}.png" width="50" height="50"></td>
+    		<td id="H6"><img src="/views/board/piece_images/{{ board_imgs.h6 }}.png" width="50" height="50"></td>
    			<th>6</th>
    		</tr>
    		<tr>
    			<th>5</th>
-    		<td id="A5"></td>
-    		<td id="B5"></td>
-    		<td id="C5"></td>
-    		<td id="D5"></td>
-    		<td id="E5"></td>
-    		<td id="F5"></td>
-    		<td id="G5"></td>
-    		<td id="H5"></td>
+    		<td id="A5"><img src="/views/board/piece_images/{{ board_imgs.a5 }}.png" width="50" height="50"></td>
+    		<td id="B5"><img src="/views/board/piece_images/{{ board_imgs.b5 }}.png" width="50" height="50"></td>
+    		<td id="C5"><img src="/views/board/piece_images/{{ board_imgs.c5 }}.png" width="50" height="50"></td>
+    		<td id="D5"><img src="/views/board/piece_images/{{ board_imgs.d5 }}.png" width="50" height="50"></td>
+    		<td id="E5"><img src="/views/board/piece_images/{{ board_imgs.e5 }}.png" width="50" height="50"></td>
+    		<td id="F5"><img src="/views/board/piece_images/{{ board_imgs.f5 }}.png" width="50" height="50"></td>
+    		<td id="G5"><img src="/views/board/piece_images/{{ board_imgs.g5 }}.png" width="50" height="50"></td>
+    		<td id="H5"><img src="/views/board/piece_images/{{ board_imgs.h5 }}.png" width="50" height="50"></td>
    			<th>5</th>
    		</tr>
    		<tr>
    			<th>4</th>
-    		<td id="A4"></td>
-    		<td id="B4"></td>
-    		<td id="C4"></td>
-    		<td id="D4"></td>
-    		<td id="E4"></td>
-    		<td id="F4"></td>
-    		<td id="G4"></td>
-    		<td id="H4"></td>
+    		<td id="A4"><img src="/views/board/piece_images/{{ board_imgs.a4 }}.png" width="50" height="50"></td>
+    		<td id="B4"><img src="/views/board/piece_images/{{ board_imgs.b4 }}.png" width="50" height="50"></td>
+    		<td id="C4"><img src="/views/board/piece_images/{{ board_imgs.c4 }}.png" width="50" height="50"></td>
+    		<td id="D4"><img src="/views/board/piece_images/{{ board_imgs.d4 }}.png" width="50" height="50"></td>
+    		<td id="E4"><img src="/views/board/piece_images/{{ board_imgs.e4 }}.png" width="50" height="50"></td>
+    		<td id="F4"><img src="/views/board/piece_images/{{ board_imgs.f4 }}.png" width="50" height="50"></td>
+    		<td id="G4"><img src="/views/board/piece_images/{{ board_imgs.g4 }}.png" width="50" height="50"></td>
+    		<td id="H4"><img src="/views/board/piece_images/{{ board_imgs.h4 }}.png" width="50" height="50"></td>
    			<th>4</th>
    		</tr>
    		<tr>
    			<th>3</th>
-    		<td id="A3"></td>
-    		<td id="B3"></td>
-    		<td id="C3"></td>
-    		<td id="D3"></td>
-    		<td id="E3"></td>
-    		<td id="F3"></td>
-    		<td id="G3"></td>
-    		<td id="H3"></td>
+    		<td id="A3"><img src="/views/board/piece_images/{{ board_imgs.a3 }}.png" width="50" height="50"></td>
+    		<td id="B3"><img src="/views/board/piece_images/{{ board_imgs.b3 }}.png" width="50" height="50"></td>
+    		<td id="C3"><img src="/views/board/piece_images/{{ board_imgs.c3 }}.png" width="50" height="50"></td>
+    		<td id="D3"><img src="/views/board/piece_images/{{ board_imgs.d3 }}.png" width="50" height="50"></td>
+    		<td id="E3"><img src="/views/board/piece_images/{{ board_imgs.e3 }}.png" width="50" height="50"></td>
+    		<td id="F3"><img src="/views/board/piece_images/{{ board_imgs.f3 }}.png" width="50" height="50"></td>
+    		<td id="G3"><img src="/views/board/piece_images/{{ board_imgs.g3 }}.png" width="50" height="50"></td>
+    		<td id="H3"><img src="/views/board/piece_images/{{ board_imgs.h3 }}.png" width="50" height="50"></td>
    			<th>3</th>
    		</tr>
    		<tr>
    			<th>2</th>
-    		<td id="A2"><img src="/views/board/piece_images/pawn_w.png" alt="white pawn" width="50" height="50"></td>
-    		<td id="B2"><img src="/views/board/piece_images/pawn_w.png" alt="white pawn" width="50" height="50"></td>
-    		<td id="C2"><img src="/views/board/piece_images/pawn_w.png" alt="white pawn" width="50" height="50"></td>
-    		<td id="D2"><img src="/views/board/piece_images/pawn_w.png" alt="white pawn" width="50" height="50"></td>
-    		<td id="E2"><img src="/views/board/piece_images/pawn_w.png" alt="white pawn" width="50" height="50"></td>
-    		<td id="F2"><img src="/views/board/piece_images/pawn_w.png" alt="white pawn" width="50" height="50"></td>
-    		<td id="G2"><img src="/views/board/piece_images/pawn_w.png" alt="white pawn" width="50" height="50"></td>
-    		<td id="H2"><img src="/views/board/piece_images/pawn_w.png" alt="white pawn" width="50" height="50"></td>
+			<td id="A2"><img src="/views/board/piece_images/{{ board_imgs.a2 }}.png" alt="white pawn" width="50" height="50"></td>
+    		<td id="B2"><img src="/views/board/piece_images/{{ board_imgs.b2 }}.png" alt="white pawn" width="50" height="50"></td>
+    		<td id="C2"><img src="/views/board/piece_images/{{ board_imgs.c2 }}.png" alt="white pawn" width="50" height="50"></td>
+    		<td id="D2"><img src="/views/board/piece_images/{{ board_imgs.d2 }}.png" alt="white pawn" width="50" height="50"></td>
+    		<td id="E2"><img src="/views/board/piece_images/{{ board_imgs.e2 }}.png" alt="white pawn" width="50" height="50"></td>
+    		<td id="F2"><img src="/views/board/piece_images/{{ board_imgs.f2 }}.png" alt="white pawn" width="50" height="50"></td>
+    		<td id="G2"><img src="/views/board/piece_images/{{ board_imgs.g2 }}.png" alt="white pawn" width="50" height="50"></td>
+    		<td id="H2"><img src="/views/board/piece_images/{{ board_imgs.h2 }}.png" alt="white pawn" width="50" height="50"></td>
    			<th>2</th>
    		</tr>
    		<tr>
    			<th>1</th>
-    		<td id="A1"><img src="/views/board/piece_images/rook_w.png" alt="white rook" width="50" height="50"></td>
-    		<td id="B1"><img src="/views/board/piece_images/horse_w.png" alt="white horse" width="50" height="50"></td>
-    		<td id="C1"><img src="/views/board/piece_images/bishop_w.png" alt="white bishop" width="50" height="50"></td>
-    		<td id="D1"><img src="/views/board/piece_images/queen_w.png" alt="white queen" width="50" height="50"></td>
-    		<td id="E1"><img src="/views/board/piece_images/king_w.png" alt="white king" width="50" height="50"></td>
-    		<td id="F1"><img src="/views/board/piece_images/bishop_w.png" alt="white bishop" width="50" height="50"></td>
-    		<td id="G1"><img src="/views/board/piece_images/horse_w.png" alt="white horse" width="50" height="50"></td>
-    		<td id="H1"><img src="/views/board/piece_images/rook_w.png" alt="white rook" width="50" height="50"></td>
+    		<td id="A1"><img src="/views/board/piece_images/{{ board_imgs.a1 }}.png" alt="white rook" width="50" height="50"></td>
+    		<td id="B1"><img src="/views/board/piece_images/{{ board_imgs.b1 }}.png" alt="white horse" width="50" height="50"></td>
+    		<td id="C1"><img src="/views/board/piece_images/{{ board_imgs.c1 }}.png" alt="white bishop" width="50" height="50"></td>
+    		<td id="D1"><img src="/views/board/piece_images/{{ board_imgs.d1 }}.png" alt="white queen" width="50" height="50"></td>
+    		<td id="E1"><img src="/views/board/piece_images/{{ board_imgs.e1 }}.png" alt="white king" width="50" height="50"></td>
+    		<td id="F1"><img src="/views/board/piece_images/{{ board_imgs.f1 }}.png" alt="white bishop" width="50" height="50"></td>
+    		<td id="G1"><img src="/views/board/piece_images/{{ board_imgs.g1 }}.png" alt="white horse" width="50" height="50"></td>
+    		<td id="H1"><img src="/views/board/piece_images/{{ board_imgs.h1 }}.png" alt="white rook" width="50" height="50"></td>
    			<th>1</th>
    		</tr>
    		<tr>
@@ -169,7 +169,8 @@
     <center><button id="submit">Lock in Move</button></center>
 
     <!-- You can also require other files to run in this process -->
-    <script src="/views/board/renderer.js"></script>
+    <script src="/views/board/renderer.js">
+	</script>
 	{% endblock %}
   </body>
 </html>

@@ -6,6 +6,10 @@ body {
 	background: linear-gradient(#B0A7A2, #CAEEF5);
 }
 
+img[src="/views/board/piece_images/.png"] {
+	display: none;
+}
+
 a {
 	color: black;
 	padding-right: 40px;

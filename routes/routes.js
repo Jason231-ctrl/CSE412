@@ -463,10 +463,135 @@ router.post('/boards', async (req, res) => {
             ) VALUES($1, $2, 4, 1, 'h8', '');`,
             [board.rows[0].board_id, req.body.opponent_id]
         );
+        board = await pool.query(
+            `select
+                player_piece.board_id,
+                player_piece.player_id,
+                player_piece.piece_id,
+                player_piece.is_alive,
+                player_piece.piece_position,
+                player_piece.positions_available,
+                case
+                    when plays_in.is_first = 1 
+                        and player_piece.piece_id in (9,10,11,12,13,14,15,16)
+                        then 'pawn_w'
+                    when plays_in.is_first = 1 
+                        and player_piece.piece_id in (7,8)
+                        then 'horse_w'
+                    when plays_in.is_first = 1 
+                        and player_piece.piece_id in (5,6)
+                        then 'bishop_w'
+                    when plays_in.is_first = 1 
+                        and player_piece.piece_id in (3,4)
+                        then 'rook_w'
+                    when plays_in.is_first = 1 
+                        and player_piece.piece_id in (2)
+                        then 'queen_w'
+                    when plays_in.is_first = 1 
+                        and player_piece.piece_id in (1)
+                        then 'king_w'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id in (9,10,11,12,13,14,15,16)
+                        then 'pawn_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id in (7,8)
+                        then 'horse_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id in (5,6)
+                        then 'bishop_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id in (3,4)
+                        then 'rook_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id in (2)
+                        then 'queen_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id in (1)
+                        then 'king_b'
+                    else ''
+                end as img
+            from
+                player_piece
+                join plays_in
+                    on player_piece.board_id = plays_in.board_id
+                    and player_piece.player_id = plays_in.player_id
+            where
+                player_piece.board_id = $1
+            ;`,
+            [board.rows[0].board_id]
+        );
+        board_imgs = {
+            a1: (board.rows.filter(p => p.piece_position === 'a1').length>0) ? board.rows.filter(p => p.piece_position === 'a1')[0].img : '',
+            a2: (board.rows.filter(p => p.piece_position === 'a2').length>0) ? board.rows.filter(p => p.piece_position === 'a2')[0].img : '',
+            a3: (board.rows.filter(p => p.piece_position === 'a3').length>0) ? board.rows.filter(p => p.piece_position === 'a3')[0].img : '',
+            a4: (board.rows.filter(p => p.piece_position === 'a4').length>0) ? board.rows.filter(p => p.piece_position === 'a4')[0].img : '',
+            a5: (board.rows.filter(p => p.piece_position === 'a5').length>0) ? board.rows.filter(p => p.piece_position === 'a5')[0].img : '',
+            a6: (board.rows.filter(p => p.piece_position === 'a6').length>0) ? board.rows.filter(p => p.piece_position === 'a6')[0].img : '',
+            a7: (board.rows.filter(p => p.piece_position === 'a7').length>0) ? board.rows.filter(p => p.piece_position === 'a7')[0].img : '',
+            a8: (board.rows.filter(p => p.piece_position === 'a8').length>0) ? board.rows.filter(p => p.piece_position === 'a8')[0].img : '',
+            b1: (board.rows.filter(p => p.piece_position === 'b1').length>0) ? board.rows.filter(p => p.piece_position === 'b1')[0].img : '',
+            b2: (board.rows.filter(p => p.piece_position === 'b2').length>0) ? board.rows.filter(p => p.piece_position === 'b2')[0].img : '',
+            b3: (board.rows.filter(p => p.piece_position === 'b3').length>0) ? board.rows.filter(p => p.piece_position === 'b3')[0].img : '',
+            b4: (board.rows.filter(p => p.piece_position === 'b4').length>0) ? board.rows.filter(p => p.piece_position === 'b4')[0].img : '',
+            b5: (board.rows.filter(p => p.piece_position === 'b5').length>0) ? board.rows.filter(p => p.piece_position === 'b5')[0].img : '',
+            b6: (board.rows.filter(p => p.piece_position === 'b6').length>0) ? board.rows.filter(p => p.piece_position === 'b6')[0].img : '',
+            b7: (board.rows.filter(p => p.piece_position === 'b7').length>0) ? board.rows.filter(p => p.piece_position === 'b7')[0].img : '',
+            b8: (board.rows.filter(p => p.piece_position === 'b8').length>0) ? board.rows.filter(p => p.piece_position === 'b8')[0].img : '',
+            c1: (board.rows.filter(p => p.piece_position === 'c1').length>0) ? board.rows.filter(p => p.piece_position === 'c1')[0].img : '',
+            c2: (board.rows.filter(p => p.piece_position === 'c2').length>0) ? board.rows.filter(p => p.piece_position === 'c2')[0].img : '',
+            c3: (board.rows.filter(p => p.piece_position === 'c3').length>0) ? board.rows.filter(p => p.piece_position === 'c3')[0].img : '',
+            c4: (board.rows.filter(p => p.piece_position === 'c4').length>0) ? board.rows.filter(p => p.piece_position === 'c4')[0].img : '',
+            c5: (board.rows.filter(p => p.piece_position === 'c5').length>0) ? board.rows.filter(p => p.piece_position === 'c5')[0].img : '',
+            c6: (board.rows.filter(p => p.piece_position === 'c6').length>0) ? board.rows.filter(p => p.piece_position === 'c6')[0].img : '',
+            c7: (board.rows.filter(p => p.piece_position === 'c7').length>0) ? board.rows.filter(p => p.piece_position === 'c7')[0].img : '',
+            c8: (board.rows.filter(p => p.piece_position === 'c8').length>0) ? board.rows.filter(p => p.piece_position === 'c8')[0].img : '',
+            d1: (board.rows.filter(p => p.piece_position === 'd1').length>0) ? board.rows.filter(p => p.piece_position === 'd1')[0].img : '',
+            d2: (board.rows.filter(p => p.piece_position === 'd2').length>0) ? board.rows.filter(p => p.piece_position === 'd2')[0].img : '',
+            d3: (board.rows.filter(p => p.piece_position === 'd3').length>0) ? board.rows.filter(p => p.piece_position === 'd3')[0].img : '',
+            d4: (board.rows.filter(p => p.piece_position === 'd4').length>0) ? board.rows.filter(p => p.piece_position === 'd4')[0].img : '',
+            d5: (board.rows.filter(p => p.piece_position === 'd5').length>0) ? board.rows.filter(p => p.piece_position === 'd5')[0].img : '',
+            d6: (board.rows.filter(p => p.piece_position === 'd6').length>0) ? board.rows.filter(p => p.piece_position === 'd6')[0].img : '',
+            d7: (board.rows.filter(p => p.piece_position === 'd7').length>0) ? board.rows.filter(p => p.piece_position === 'd7')[0].img : '',
+            d8: (board.rows.filter(p => p.piece_position === 'd8').length>0) ? board.rows.filter(p => p.piece_position === 'd8')[0].img : '',
+            e1: (board.rows.filter(p => p.piece_position === 'e1').length>0) ? board.rows.filter(p => p.piece_position === 'e1')[0].img : '',
+            e2: (board.rows.filter(p => p.piece_position === 'e2').length>0) ? board.rows.filter(p => p.piece_position === 'e2')[0].img : '',
+            e3: (board.rows.filter(p => p.piece_position === 'e3').length>0) ? board.rows.filter(p => p.piece_position === 'e3')[0].img : '',
+            e4: (board.rows.filter(p => p.piece_position === 'e4').length>0) ? board.rows.filter(p => p.piece_position === 'e4')[0].img : '',
+            e5: (board.rows.filter(p => p.piece_position === 'e5').length>0) ? board.rows.filter(p => p.piece_position === 'e5')[0].img : '',
+            e6: (board.rows.filter(p => p.piece_position === 'e6').length>0) ? board.rows.filter(p => p.piece_position === 'e6')[0].img : '',
+            e7: (board.rows.filter(p => p.piece_position === 'e7').length>0) ? board.rows.filter(p => p.piece_position === 'e7')[0].img : '',
+            e8: (board.rows.filter(p => p.piece_position === 'e8').length>0) ? board.rows.filter(p => p.piece_position === 'e8')[0].img : '',
+            f1: (board.rows.filter(p => p.piece_position === 'f1').length>0) ? board.rows.filter(p => p.piece_position === 'f1')[0].img : '',
+            f2: (board.rows.filter(p => p.piece_position === 'f2').length>0) ? board.rows.filter(p => p.piece_position === 'f2')[0].img : '',
+            f3: (board.rows.filter(p => p.piece_position === 'f3').length>0) ? board.rows.filter(p => p.piece_position === 'f3')[0].img : '',
+            f4: (board.rows.filter(p => p.piece_position === 'f4').length>0) ? board.rows.filter(p => p.piece_position === 'f4')[0].img : '',
+            f5: (board.rows.filter(p => p.piece_position === 'f5').length>0) ? board.rows.filter(p => p.piece_position === 'f5')[0].img : '',
+            f6: (board.rows.filter(p => p.piece_position === 'f6').length>0) ? board.rows.filter(p => p.piece_position === 'f6')[0].img : '',
+            f7: (board.rows.filter(p => p.piece_position === 'f7').length>0) ? board.rows.filter(p => p.piece_position === 'f7')[0].img : '',
+            f8: (board.rows.filter(p => p.piece_position === 'f8').length>0) ? board.rows.filter(p => p.piece_position === 'f8')[0].img : '',
+            g1: (board.rows.filter(p => p.piece_position === 'g1').length>0) ? board.rows.filter(p => p.piece_position === 'g1')[0].img : '',
+            g2: (board.rows.filter(p => p.piece_position === 'g2').length>0) ? board.rows.filter(p => p.piece_position === 'g2')[0].img : '',
+            g3: (board.rows.filter(p => p.piece_position === 'g3').length>0) ? board.rows.filter(p => p.piece_position === 'g3')[0].img : '',
+            g4: (board.rows.filter(p => p.piece_position === 'g4').length>0) ? board.rows.filter(p => p.piece_position === 'g4')[0].img : '',
+            g5: (board.rows.filter(p => p.piece_position === 'g5').length>0) ? board.rows.filter(p => p.piece_position === 'g5')[0].img : '',
+            g6: (board.rows.filter(p => p.piece_position === 'g6').length>0) ? board.rows.filter(p => p.piece_position === 'g6')[0].img : '',
+            g7: (board.rows.filter(p => p.piece_position === 'g7').length>0) ? board.rows.filter(p => p.piece_position === 'g7')[0].img : '',
+            g8: (board.rows.filter(p => p.piece_position === 'g8').length>0) ? board.rows.filter(p => p.piece_position === 'g8')[0].img : '',
+            h1: (board.rows.filter(p => p.piece_position === 'h1').length>0) ? board.rows.filter(p => p.piece_position === 'h1')[0].img : '',
+            h2: (board.rows.filter(p => p.piece_position === 'h2').length>0) ? board.rows.filter(p => p.piece_position === 'h2')[0].img : '',
+            h3: (board.rows.filter(p => p.piece_position === 'h3').length>0) ? board.rows.filter(p => p.piece_position === 'h3')[0].img : '',
+            h4: (board.rows.filter(p => p.piece_position === 'h4').length>0) ? board.rows.filter(p => p.piece_position === 'h4')[0].img : '',
+            h5: (board.rows.filter(p => p.piece_position === 'h5').length>0) ? board.rows.filter(p => p.piece_position === 'h5')[0].img : '',
+            h6: (board.rows.filter(p => p.piece_position === 'h6').length>0) ? board.rows.filter(p => p.piece_position === 'h6')[0].img : '',
+            h7: (board.rows.filter(p => p.piece_position === 'h7').length>0) ? board.rows.filter(p => p.piece_position === 'h7')[0].img : '',
+            h8: (board.rows.filter(p => p.piece_position === 'h8').length>0) ? board.rows.filter(p => p.piece_position === 'h8')[0].img : ''
+        };
+        console.log(board_imgs.a1);
         res.render('board/board', {
             'player': req.cookies.player, 
             'opponent': req.cookies.opponent,
-            'board': board.rows[0]
+            'board': board.rows,
+            'board_imgs': board_imgs
         });
     } catch (err) {
         console.error(err.message);
