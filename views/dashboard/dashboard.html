@@ -152,11 +152,17 @@
         <label id="loses">{{ player_stats.losses }}</label>
       </div>
       
+      // this needs to be a post request to create a board
       <div id="newGameButton">
         <br><br>
         <img id="newGameIcon" src="/views/images/pawnDesignDash1.png" alt="newGameIcon">
         <br><br>
         <h1>New Game</h1>
+        <form action="/boards" method="POST">
+          <input type="hidden" name="player_id" value="{{ player.player_id }}">
+          <input type="hidden" name="opponent_id" value="{{ opponent.player_id }}">
+          <input type="submit">
+        </form>
       </div>
 
 

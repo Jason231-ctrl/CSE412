@@ -13,8 +13,9 @@ router.get('/players', async (req, res) => {
 
 router.post('/players', async (req, res) => {
     try {
-        // if user doesn't exist, create
-        // and set computer as opponent
+        // player: if user doesn't exist, create
+        // player_stats: wins/losses, defaults to 0
+        // oppontent: default computer
         const { player_name } = req.body;
         player = await pool.query(
             'INSERT INTO player (player_name) VALUES($1) RETURNING *', 
@@ -57,8 +58,9 @@ router.post('/players', async (req, res) => {
     } catch (err) {
         console.error(err.message);
         const { player_name } = req.body;
-        // if user exists, select
-        // and set computer as opponent
+        // player: if user exists, select
+        // player_stats: wins/losses, defaults to 0
+        // oppontent: default computer
         if (err.message.startsWith("duplicate key value violates unique constraint")) {
             player = await pool.query(
                 "SELECT * FROM player WHERE player_name = $1",
@@ -91,7 +93,6 @@ router.post('/players', async (req, res) => {
             const opponent = await pool.query(
                 "SELECT * FROM player WHERE player_name = 'Computer';"
             );
-            console.log(player_stats.rows[0]);
             res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
             res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
             res.render('dashboard/dashboard', {
@@ -154,14 +155,209 @@ router.get('/boards', async (req, res) => {
     }
 });
 
+// this creates the board
 router.post('/boards', async (req, res) => {
     try {
-        const { board } = req.body;
-        player = await pool.query(
-            "INSERT INTO board (board_status) VALUES('open') RETURNING *", 
-            [board]
-        );
-        res.render('board/board', {'player': req.cookies.player, 'opponent': req.cookies.opponent, 'board': board});
+        const { player } = req.body;
+        // board = await pool.query(
+        //     "INSERT INTO board (board_status) VALUES('open') RETURNING *"
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        // player_piece =  await pool.query(
+        //     `INSERT INTO player_piece(
+        //         board_id, player_id, piece_id, is_alive, piece_position, positions_available
+        //     ) VALUES($1, $2, $3, 1, 'a1', '');`,
+        //     [board.rows[0].board_id, player.player_id, player.opponent_id]
+        // );
+        res.render('board/board', {
+            'player': req.cookies.player, 
+            'opponent': req.cookies.opponent
+        });
     } catch (err) {
         console.error(err.message);
     }
