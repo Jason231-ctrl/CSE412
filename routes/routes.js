@@ -21,6 +21,8 @@ router.post('/players', async (req, res) => {
             'INSERT INTO player (player_name) VALUES($1) RETURNING *', 
             [player_name]
         );
+
+        // player wins and losses
         const player_stats = await pool.query(
             `select
                 coalesce(sum(case
@@ -45,6 +47,8 @@ router.post('/players', async (req, res) => {
                 player.player_name = $1;`,
             [player_name]
         );
+
+        // player board history
         const boards = await pool.query(
             `with player_boards as (
                 select
@@ -94,7 +98,7 @@ router.post('/players', async (req, res) => {
             [player_name]
         );
         const opponent = await pool.query(
-            "SELECT * FROM player WHERE player_name = 'Computer';"
+            "SELECT * FROM player WHERE player_name = 'COMPUTER';"
         );
         res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
         res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
@@ -188,9 +192,8 @@ router.post('/players', async (req, res) => {
                 [player_name]
             );
             const opponent = await pool.query(
-                "SELECT * FROM player WHERE player_name = 'Computer';"
+                "SELECT * FROM player WHERE player_name = 'COMPUTER';"
             );
-            console.log('rendering dashboard');
             res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
             res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
             res.render('dashboard/dashboard', {
@@ -211,7 +214,7 @@ router.get('/players/:id', async (req, res) => {
             [id]
         );
         const opponent = await pool.query(
-            "SELECT * FROM player WHERE player_name = 'Computer';"
+            "SELECT * FROM player WHERE player_name = 'COMPUTER';"
         );
         res.cookie('player', player.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
         res.cookie('opponent', opponent.rows[0], { expires: new Date(Date.now() + 900000), httpOnly: true });
@@ -460,7 +463,6 @@ router.post('/boards', async (req, res) => {
             ) VALUES($1, $2, 4, 1, 'h8', '');`,
             [board.rows[0].board_id, req.body.opponent_id]
         );
-        console.log('rendering board');
         res.render('board/board', {
             'player': req.cookies.player, 
             'opponent': req.cookies.opponent,

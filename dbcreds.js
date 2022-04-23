@@ -4,5 +4,5 @@ module.exports = {
     password: process.env.PG_ROOT,
     host: "localhost",
     port: 5432,
-    database: "ChessDB"
+    database: "chessdb"
 };
