@@ -123,11 +123,9 @@ router.post('/players', async (req, res) => {
             'boards': boards.rows
         });
     } catch (err) {
-        console.error(err.message);
+        
         const { player_name } = req.body;
-        // player: if user exists, select
-        // player_stats: wins/losses, defaults to 0
-        // oppontent: default computer
+        // if user exist error, just select it and repeat above
         if (err.message.startsWith("duplicate key value violates unique constraint")) {
             player = await pool.query(
                 "SELECT * FROM player WHERE player_name = $1",
@@ -229,6 +227,8 @@ router.post('/players', async (req, res) => {
                 'player_stats': player_stats.rows[0],
                 'boards': boards.rows
             });
+        } else {
+            console.error(err.message);
         }
     }
 });
