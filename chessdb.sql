@@ -5,12 +5,12 @@
 -- Dumped from database version 13.5
 -- Dumped by pg_dump version 13.5
 
--- Started on 2022-04-17 07:47:41 MST
+-- Started on 2022-04-23 03:41:24 MST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
+SET client_encoding = 'SQL_ASCII';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
@@ -29,7 +29,7 @@ CREATE SCHEMA public;
 ALTER SCHEMA public OWNER TO postgres;
 
 --
--- TOC entry 3224 (class 0 OID 0)
+-- TOC entry 3223 (class 0 OID 0)
 -- Dependencies: 3
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
 --
@@ -38,7 +38,7 @@ COMMENT ON SCHEMA public IS 'standard public schema';
 
 
 --
--- TOC entry 630 (class 1247 OID 17106)
+-- TOC entry 630 (class 1247 OID 24588)
 -- Name: gamestat; Type: TYPE; Schema: public; Owner: postgres
 --
 
@@ -57,7 +57,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 203 (class 1259 OID 17127)
+-- TOC entry 203 (class 1259 OID 24609)
 -- Name: board; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -70,7 +70,7 @@ CREATE TABLE public.board (
 ALTER TABLE public.board OWNER TO postgres;
 
 --
--- TOC entry 202 (class 1259 OID 17125)
+-- TOC entry 202 (class 1259 OID 24607)
 -- Name: board_board_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -86,7 +86,7 @@ CREATE SEQUENCE public.board_board_id_seq
 ALTER TABLE public.board_board_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3225 (class 0 OID 0)
+-- TOC entry 3224 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: board_board_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -95,7 +95,7 @@ ALTER SEQUENCE public.board_board_id_seq OWNED BY public.board.board_id;
 
 
 --
--- TOC entry 205 (class 1259 OID 17135)
+-- TOC entry 205 (class 1259 OID 24617)
 -- Name: piece; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -108,7 +108,7 @@ CREATE TABLE public.piece (
 ALTER TABLE public.piece OWNER TO postgres;
 
 --
--- TOC entry 204 (class 1259 OID 17133)
+-- TOC entry 204 (class 1259 OID 24615)
 -- Name: piece_piece_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -124,7 +124,7 @@ CREATE SEQUENCE public.piece_piece_id_seq
 ALTER TABLE public.piece_piece_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3226 (class 0 OID 0)
+-- TOC entry 3225 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: piece_piece_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -133,7 +133,7 @@ ALTER SEQUENCE public.piece_piece_id_seq OWNED BY public.piece.piece_id;
 
 
 --
--- TOC entry 201 (class 1259 OID 17117)
+-- TOC entry 201 (class 1259 OID 24599)
 -- Name: player; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -146,7 +146,7 @@ CREATE TABLE public.player (
 ALTER TABLE public.player OWNER TO postgres;
 
 --
--- TOC entry 207 (class 1259 OID 17161)
+-- TOC entry 207 (class 1259 OID 24644)
 -- Name: player_piece; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -155,8 +155,8 @@ CREATE TABLE public.player_piece (
     player_id integer NOT NULL,
     piece_id integer NOT NULL,
     is_alive smallint NOT NULL,
-    piece_position character varying(32) NOT NULL,
-    positions_available character varying(128) NOT NULL,
+    piece_position character varying(2) NOT NULL,
+    positions_available character varying(128),
     CONSTRAINT player_piece_is_alive_check CHECK ((is_alive = ANY (ARRAY[0, 1])))
 );
 
@@ -164,7 +164,7 @@ CREATE TABLE public.player_piece (
 ALTER TABLE public.player_piece OWNER TO postgres;
 
 --
--- TOC entry 200 (class 1259 OID 17115)
+-- TOC entry 200 (class 1259 OID 24597)
 -- Name: player_player_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -180,7 +180,7 @@ CREATE SEQUENCE public.player_player_id_seq
 ALTER TABLE public.player_player_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3227 (class 0 OID 0)
+-- TOC entry 3226 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: player_player_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -189,7 +189,7 @@ ALTER SEQUENCE public.player_player_id_seq OWNED BY public.player.player_id;
 
 
 --
--- TOC entry 206 (class 1259 OID 17143)
+-- TOC entry 206 (class 1259 OID 24625)
 -- Name: plays_in; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -197,14 +197,16 @@ CREATE TABLE public.plays_in (
     board_id integer NOT NULL,
     player_id integer NOT NULL,
     is_first smallint NOT NULL,
-    CONSTRAINT plays_in_is_first_check CHECK ((is_first = ANY (ARRAY[0, 1])))
+    is_turn smallint NOT NULL,
+    CONSTRAINT plays_in_is_first_check CHECK ((is_first = ANY (ARRAY[0, 1]))),
+    CONSTRAINT plays_in_is_turn_check CHECK ((is_turn = ANY (ARRAY[0, 1])))
 );
 
 
 ALTER TABLE public.plays_in OWNER TO postgres;
 
 --
--- TOC entry 3054 (class 2604 OID 17130)
+-- TOC entry 3054 (class 2604 OID 24612)
 -- Name: board board_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -212,7 +214,7 @@ ALTER TABLE ONLY public.board ALTER COLUMN board_id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 3055 (class 2604 OID 17138)
+-- TOC entry 3055 (class 2604 OID 24620)
 -- Name: piece piece_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -220,7 +222,7 @@ ALTER TABLE ONLY public.piece ALTER COLUMN piece_id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 3053 (class 2604 OID 17120)
+-- TOC entry 3053 (class 2604 OID 24602)
 -- Name: player player_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -228,7 +230,7 @@ ALTER TABLE ONLY public.player ALTER COLUMN player_id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3214 (class 0 OID 17127)
+-- TOC entry 3213 (class 0 OID 24609)
 -- Dependencies: 203
 -- Data for Name: board; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -239,7 +241,7 @@ COPY public.board (board_id, board_status) FROM stdin;
 
 
 --
--- TOC entry 3216 (class 0 OID 17135)
+-- TOC entry 3215 (class 0 OID 24617)
 -- Dependencies: 205
 -- Data for Name: piece; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -265,20 +267,19 @@ COPY public.piece (piece_id, piece_name) FROM stdin;
 
 
 --
--- TOC entry 3212 (class 0 OID 17117)
+-- TOC entry 3211 (class 0 OID 24599)
 -- Dependencies: 201
 -- Data for Name: player; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.player (player_id, player_name) FROM stdin;
-1	playerA
-2	playerB
-3	anthony
+1	computer
+2	new_player
 \.
 
 
 --
--- TOC entry 3218 (class 0 OID 17161)
+-- TOC entry 3217 (class 0 OID 24644)
 -- Dependencies: 207
 -- Data for Name: player_piece; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -320,19 +321,19 @@ COPY public.player_piece (board_id, player_id, piece_id, is_alive, piece_positio
 
 
 --
--- TOC entry 3217 (class 0 OID 17143)
+-- TOC entry 3216 (class 0 OID 24625)
 -- Dependencies: 206
 -- Data for Name: plays_in; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.plays_in (board_id, player_id, is_first) FROM stdin;
-1	1	1
-1	2	0
+COPY public.plays_in (board_id, player_id, is_first, is_turn) FROM stdin;
+1	1	1	1
+1	2	0	0
 \.
 
 
 --
--- TOC entry 3228 (class 0 OID 0)
+-- TOC entry 3227 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: board_board_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -341,7 +342,7 @@ SELECT pg_catalog.setval('public.board_board_id_seq', 1, false);
 
 
 --
--- TOC entry 3229 (class 0 OID 0)
+-- TOC entry 3228 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: piece_piece_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -350,16 +351,16 @@ SELECT pg_catalog.setval('public.piece_piece_id_seq', 1, false);
 
 
 --
--- TOC entry 3230 (class 0 OID 0)
+-- TOC entry 3229 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: player_player_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.player_player_id_seq', 4, true);
+SELECT pg_catalog.setval('public.player_player_id_seq', 1, false);
 
 
 --
--- TOC entry 3063 (class 2606 OID 17132)
+-- TOC entry 3064 (class 2606 OID 24614)
 -- Name: board board_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -368,7 +369,7 @@ ALTER TABLE ONLY public.board
 
 
 --
--- TOC entry 3065 (class 2606 OID 17142)
+-- TOC entry 3066 (class 2606 OID 24624)
 -- Name: piece piece_piece_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -377,7 +378,7 @@ ALTER TABLE ONLY public.piece
 
 
 --
--- TOC entry 3067 (class 2606 OID 17140)
+-- TOC entry 3068 (class 2606 OID 24622)
 -- Name: piece piece_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -386,16 +387,7 @@ ALTER TABLE ONLY public.piece
 
 
 --
--- TOC entry 3073 (class 2606 OID 17168)
--- Name: player_piece player_piece_piece_position_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.player_piece
-    ADD CONSTRAINT player_piece_piece_position_key UNIQUE (piece_position);
-
-
---
--- TOC entry 3075 (class 2606 OID 17166)
+-- TOC entry 3074 (class 2606 OID 24649)
 -- Name: player_piece player_piece_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -404,7 +396,7 @@ ALTER TABLE ONLY public.player_piece
 
 
 --
--- TOC entry 3059 (class 2606 OID 17122)
+-- TOC entry 3060 (class 2606 OID 24604)
 -- Name: player player_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -413,7 +405,7 @@ ALTER TABLE ONLY public.player
 
 
 --
--- TOC entry 3061 (class 2606 OID 17124)
+-- TOC entry 3062 (class 2606 OID 24606)
 -- Name: player player_player_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -422,7 +414,7 @@ ALTER TABLE ONLY public.player
 
 
 --
--- TOC entry 3069 (class 2606 OID 17150)
+-- TOC entry 3070 (class 2606 OID 24633)
 -- Name: plays_in plays_in_board_id_player_id_is_first_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -431,7 +423,7 @@ ALTER TABLE ONLY public.plays_in
 
 
 --
--- TOC entry 3071 (class 2606 OID 17148)
+-- TOC entry 3072 (class 2606 OID 24631)
 -- Name: plays_in plays_in_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -440,7 +432,7 @@ ALTER TABLE ONLY public.plays_in
 
 
 --
--- TOC entry 3078 (class 2606 OID 17169)
+-- TOC entry 3077 (class 2606 OID 24650)
 -- Name: player_piece player_piece_board_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -449,7 +441,7 @@ ALTER TABLE ONLY public.player_piece
 
 
 --
--- TOC entry 3080 (class 2606 OID 17179)
+-- TOC entry 3079 (class 2606 OID 24660)
 -- Name: player_piece player_piece_piece_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -458,7 +450,7 @@ ALTER TABLE ONLY public.player_piece
 
 
 --
--- TOC entry 3079 (class 2606 OID 17174)
+-- TOC entry 3078 (class 2606 OID 24655)
 -- Name: player_piece player_piece_player_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -467,7 +459,7 @@ ALTER TABLE ONLY public.player_piece
 
 
 --
--- TOC entry 3076 (class 2606 OID 17151)
+-- TOC entry 3075 (class 2606 OID 24634)
 -- Name: plays_in plays_in_board_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -476,7 +468,7 @@ ALTER TABLE ONLY public.plays_in
 
 
 --
--- TOC entry 3077 (class 2606 OID 17156)
+-- TOC entry 3076 (class 2606 OID 24639)
 -- Name: plays_in plays_in_player_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -484,7 +476,7 @@ ALTER TABLE ONLY public.plays_in
     ADD CONSTRAINT plays_in_player_id_fkey FOREIGN KEY (player_id) REFERENCES public.player(player_id);
 
 
--- Completed on 2022-04-17 07:47:42 MST
+-- Completed on 2022-04-23 03:41:24 MST
 
 --
 -- PostgreSQL database dump complete

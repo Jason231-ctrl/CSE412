@@ -131,13 +131,9 @@
         <br>
         <h1>{{ player.player_name }}</h1>
         <h2>Current Games:</h2>
-        <div id="matches"> <p> Example </p> </div>
-        <div id="matches"> <p> Example </p> </div>
-        <div id="matches"> <p> Example </p> </div>
-        <div id="matches"> <p> Example </p> </div>
-        <div id="matches"> <p> Example </p> </div>
-        <div id="matches"> <p> Example </p> </div>
-        <div id="matches"> <p> Example </p> </div>
+          {% for board in boards %}
+          <div id="matches"> <p> vs {{ board.player2_name }} </p> </div>
+          {% endfor %}
       </div>
 
       <div id="playerCard" style="background-color: #bbb;">
