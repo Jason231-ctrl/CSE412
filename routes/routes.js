@@ -11,6 +11,9 @@ router.get('/players', async (req, res) => {
     }
 });
 
+// this is from the main screen - if a user exists, select them from the db, else add them 
+// goes directly to dashboard
+// TODO: make sure if player is not in cookie, they can't access anything but start page. 
 router.post('/players', async (req, res) => {
     try {
         const { player_name } = req.body;
