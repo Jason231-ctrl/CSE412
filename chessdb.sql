@@ -273,7 +273,7 @@ COPY public.piece (piece_id, piece_name) FROM stdin;
 --
 
 COPY public.player (player_id, player_name) FROM stdin;
-1	computer
+1	COMPUTER
 2	new_player
 \.
 

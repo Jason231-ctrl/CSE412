@@ -1,3 +1,4 @@
+
 /*window.$ = window.jQuery = require('jquery');*/
 document.getElementById("continueImg").addEventListener("click", continueLogin);
 function continueLogin()

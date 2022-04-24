@@ -271,16 +271,6 @@ router.delete('/players/:id', async (req, res) => {
     res.redirect('/admin');
 });
 
-// not used so far
-router.get('/boards', async (req, res) => {
-    try {
-        const boards = await pool.query('SELECT * FROM board');
-        res.json(boards.rows);
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
 // this creates a new board
 router.post('/boards', async (req, res) => {
     try {
@@ -494,42 +484,102 @@ router.post('/boards', async (req, res) => {
                 player_piece.piece_position,
                 player_piece.positions_available,
                 case
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (9,10,11,12,13,14,15,16)
-                        then 'pawn_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (7,8)
-                        then 'horse_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (5,6)
-                        then 'bishop_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (3,4)
-                        then 'rook_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (2)
-                        then 'queen_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (1)
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 1
                         then 'king_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 2
+                        then 'queen_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 3
+                        then 'rook1_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 4
+                        then 'rook2_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 5
+                        then 'bishop1_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 6
+                        then 'bishop2_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 7
+                        then 'knight1_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 8
+                        then 'knight2_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 9
+                        then 'pawn1_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 10
+                        then 'pawn2_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 11
+                        then 'pawn3_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 12
+                        then 'pawn4_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 13
+                        then 'pawn5_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 14
+                        then 'pawn6_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 15
+                        then 'pawn7_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 16
+                        then 'pawn8_w'
                     when plays_in.is_first = 0
-                        and player_piece.piece_id in (9,10,11,12,13,14,15,16)
-                        then 'pawn_b'
+                        and player_piece.piece_id = 1
+                        then 'king_b'
                     when plays_in.is_first = 0
-                        and player_piece.piece_id in (7,8)
-                        then 'horse_b'
-                    when plays_in.is_first = 0
-                        and player_piece.piece_id in (5,6)
-                        then 'bishop_b'
-                    when plays_in.is_first = 0
-                        and player_piece.piece_id in (3,4)
-                        then 'rook_b'
-                    when plays_in.is_first = 0
-                        and player_piece.piece_id in (2)
+                        and player_piece.piece_id = 2
                         then 'queen_b'
                     when plays_in.is_first = 0
-                        and player_piece.piece_id in (1)
-                        then 'king_b'
+                        and player_piece.piece_id = 3
+                        then 'rook1_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 4
+                        then 'rook2_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 5
+                        then 'bishop1_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 6
+                        then 'bishop2_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 7
+                        then 'knight1_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 8
+                        then 'knight2_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 9
+                        then 'pawn1_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 10
+                        then 'pawn2_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 11
+                        then 'pawn3_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 12
+                        then 'pawn4_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 13
+                        then 'pawn5_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 14
+                        then 'pawn6_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 15
+                        then 'pawn7_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 16
+                        then 'pawn8_b'
                     else ''
                 end as img
             from
@@ -678,7 +728,8 @@ router.post('/boards', async (req, res) => {
             'opponent': req.cookies.opponent,
             'board': board.rows,
             'board_imgs': board_imgs,
-            'board_avail': board_avail
+            'board_avail': board_avail,
+            'isturn': 1
         });
     } catch (err) {
         console.error(err.message);
@@ -697,43 +748,104 @@ router.get('/boards/:id', async (req, res) => {
                 player_piece.is_alive,
                 player_piece.piece_position,
                 player_piece.positions_available,
+                board.board_status,
                 case
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (9,10,11,12,13,14,15,16)
-                        then 'pawn_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (7,8)
-                        then 'horse_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (5,6)
-                        then 'bishop_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (3,4)
-                        then 'rook_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (2)
-                        then 'queen_w'
-                    when plays_in.is_first = 1 
-                        and player_piece.piece_id in (1)
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 1
                         then 'king_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 2
+                        then 'queen_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 3
+                        then 'rook1_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 4
+                        then 'rook2_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 5
+                        then 'bishop1_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 6
+                        then 'bishop2_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 7
+                        then 'knight1_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 8
+                        then 'knight2_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 9
+                        then 'pawn1_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 10
+                        then 'pawn2_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 11
+                        then 'pawn3_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 12
+                        then 'pawn4_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 13
+                        then 'pawn5_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 14
+                        then 'pawn6_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 15
+                        then 'pawn7_w'
+                    when plays_in.is_first = 1
+                        and player_piece.piece_id = 16
+                        then 'pawn8_w'
                     when plays_in.is_first = 0
-                        and player_piece.piece_id in (9,10,11,12,13,14,15,16)
-                        then 'pawn_b'
+                        and player_piece.piece_id = 1
+                        then 'king_b'
                     when plays_in.is_first = 0
-                        and player_piece.piece_id in (7,8)
-                        then 'horse_b'
-                    when plays_in.is_first = 0
-                        and player_piece.piece_id in (5,6)
-                        then 'bishop_b'
-                    when plays_in.is_first = 0
-                        and player_piece.piece_id in (3,4)
-                        then 'rook_b'
-                    when plays_in.is_first = 0
-                        and player_piece.piece_id in (2)
+                        and player_piece.piece_id = 2
                         then 'queen_b'
                     when plays_in.is_first = 0
-                        and player_piece.piece_id in (1)
-                        then 'king_b'
+                        and player_piece.piece_id = 3
+                        then 'rook1_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 4
+                        then 'rook2_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 5
+                        then 'bishop1_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 6
+                        then 'bishop2_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 7
+                        then 'knight1_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 8
+                        then 'knight2_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 9
+                        then 'pawn1_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 10
+                        then 'pawn2_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 11
+                        then 'pawn3_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 12
+                        then 'pawn4_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 13
+                        then 'pawn5_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 14
+                        then 'pawn6_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 15
+                        then 'pawn7_b'
+                    when plays_in.is_first = 0
+                        and player_piece.piece_id = 16
+                        then 'pawn8_b'
                     else ''
                 end as img
             from
@@ -741,8 +853,11 @@ router.get('/boards/:id', async (req, res) => {
                 join plays_in
                     on player_piece.board_id = plays_in.board_id
                     and player_piece.player_id = plays_in.player_id
+                join board
+                    on player_piece.board_id = board.board_id
             where
                 player_piece.board_id = $1
+                and player_piece.is_alive = 1
             ;`, 
             [id]
         );
@@ -894,13 +1009,138 @@ router.get('/boards/:id', async (req, res) => {
             h7: (board.rows.filter(p => p.piece_position === 'h7').length>0) ? board.rows.filter(p => p.piece_position === 'h7')[0].positions_available : '',
             h8: (board.rows.filter(p => p.piece_position === 'h8').length>0) ? board.rows.filter(p => p.piece_position === 'h8')[0].positions_available : ''
         };
+        const next_turn = await pool.query(
+            `select
+                player.player_id,
+                player.player_name,
+                board.board_status,
+                plays_in.is_turn
+            from 
+                plays_in
+                join board
+                    on plays_in.board_id = board.board_id
+                join player
+                    on plays_in.player_id = player.player_id
+            where
+                board.board_id = $1
+                and player.player_id = $2
+            ;`,
+            [id, req.cookies.player.player_id]
+        );
         res.render('board/board', {
             'player': req.cookies.player,
             'opponent': opponent.rows[0], 
             'board': board.rows,
             'board_imgs': board_imgs,
-            'board_avail': board_avail
+            'board_avail': board_avail,
+            'isturn': next_turn.rows[0].is_turn
         });
+        
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+// update board in history
+router.post('/boards/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const board_id = req.body.board_id;
+        const player_id = req.body.player_id; 
+        const opponent_id = req.body.opponent_id; 
+        const piece_id = req.body.piece_id; 
+        const player_turn = req.body.player_turn;
+        const opponent_turn = req.body.opponent_turn;
+        const old_position = req.body.old_position;
+        const new_position = req.body.new_position;
+        const current_player_id = (player_turn===0) ? player_id : opponent_id;
+        const killed_player_id = (player_turn===0) ? opponent_id : player_id;
+
+        const update_player_turn = await pool.query(
+            `update 
+                plays_in 
+                set is_turn = $3
+            where 
+                board_id = $1 
+                and player_id = $2;`,
+            [board_id, player_id, player_turn]
+        );
+        const update_opponent_turn = await pool.query(
+            `update 
+                plays_in 
+                set is_turn = $3
+            where 
+                board_id = $1 
+                and player_id = $2;`,
+            [board_id, opponent_id, opponent_turn]
+        );
+        const update_killed_piece = await pool.query(
+            `update 
+                player_piece 
+                set is_alive = 0
+            where 
+                board_id = $1
+                and player_id = $2
+                and piece_position = $3
+            ;`,
+            [board_id, killed_player_id, new_position]
+        );
+        const update_piece_position = await pool.query(
+            `update 
+                player_piece 
+                set piece_position = $4
+            where 
+                board_id = $1
+                and player_id = $2
+                and piece_id = $3
+            ;`,
+            [board_id, current_player_id, piece_id, new_position]
+        );
+       const living_kings = await pool.query(
+            `select 
+                sum(player_piece.is_alive) as num_alive
+            from 
+                player_piece
+            where
+                player_piece.board_id = $1
+                and player_piece.piece_id = 1
+            ;`,
+            [board_id]
+       );
+       if (living_kings.rows[0].num_alive === 1) {
+           const board_status = await pool.query(
+               `select
+                    plays_in.player_id,
+                    case
+                        when plays_in.is_first = 1 then 'p1wins'
+                        when plays_in.is_first = 0 then 'p2wins'
+                        else 'draw'
+                    end as status
+                from 
+                    player_piece
+                    join plays_in
+                        on player_piece.board_id = plays_in.board_id
+                        and player_piece.player_id = plays_in.player_id
+                where
+                    player_piece.board_id = $1
+                    and player_piece.piece_id = 1
+                    and player_piece.is_alive = 1
+                ;`,
+               [board_id]
+           );
+           const update_board_status = await pool.query(
+               `update 
+                    board
+                    set board_status = $2
+                where
+                    board_id = $1
+                ;`,
+               [board_id, board_status.rows[0].status]
+           );
+       }
+       /* if no moves are possible for either choose a winner */
+
+        res.redirect('/boards/'+board_id);
     } catch (err) {
         console.error(err.message);
     }
@@ -1132,7 +1372,7 @@ router.get('/dashboard', async (req, res) => {
             'boards': boards.rows
         });
     } catch (err) {
-        console.log(err);
+        console.error(err.message);
     }
 });
 

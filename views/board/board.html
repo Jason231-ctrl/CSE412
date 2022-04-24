@@ -24,7 +24,7 @@
   	</div>
 
 	
-    <center><h1>{{ board[0].board_id }}) {{ player.player_name }} vs {{ opponent.player_name }}</h1>
+    <center><h1>{{ board[0].board_status }}) {{ player.player_name }} vs {{ opponent.player_name }}</h1>
     
     <div id="container">
     
@@ -36,7 +36,7 @@
     
     <!---board start--->
     
-    <table id="board">
+    <table id="board" data-boardid="{{ board[0].board_id }}" data-playerid="{{ player.player_id }}" data-opponentid="{{ opponent.player_id }}" data-isturn="{{ isturn }}" data-boardstatus="{{ board[0].board_status }}">
     	<tr>
     		<th></th>
     		<th>A</th>
@@ -52,7 +52,7 @@
    		<tr>
    			<th>8</th>
 				<td id="A8">
-					<button class="square" id="row-0-column-0" data-team="{{ '' }}" data-turn="{{ '' }}" data-available="{{ '' }}">
+					<button class="square" id="row-0-column-0">
 						<img src="/views/board/piece_images/{{ board_imgs.a8 }}.png" width="50" height="50">
 					</button>
 				</td>
@@ -425,9 +425,9 @@
 	<form action="/dashboard" method="GET">
 		<input type="submit" value="Dashboard">
 	</form>
-
-    <!-- You can also require other files to run in this process -->
-    <script src="/views/board/board.js"></script>
 	{% endblock %}
+
+	<!-- You can also require other files to run in this process -->
+	<script nonce="b64value" src="/views/board/board.js" defer></script>
   </body>
 </html>
