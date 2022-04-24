@@ -818,7 +818,6 @@ var chess = function(chessboard, user_interface) {
 		});
 	};
 	var make_move_or_show_possible_moves = function(event) {
-		var square_data;
 		square = event.target;
 		square_data = parse_square(square);
 		selected_piece ? make_move(square_data) : show_possible_moves(square_data);
@@ -838,8 +837,6 @@ var chess = function(chessboard, user_interface) {
 		if (is_valid_move(move_data)) {
 			chessboard.move_piece(selected_square_data, move_data);
 			user_interface.set_square_piece(selected_square_data, move_data, selected_piece.id);
-			// user_interface.set_square_piece(selected_square_data, "");
-			// toggle_active_player();
 		}
 		selected_piece = null;
 		selected_square_data = null;
@@ -859,11 +856,29 @@ var chess = function(chessboard, user_interface) {
 		});
 		return valid;		
 	};
+	var player2_moves = function() {
+		var all_possible_moves = [];
+		document.querySelectorAll('.square').forEach(function(square) {
+			square_data = parse_square(square);
+			if (is_valid_square(square_data)) {
+				var sample_possible_moves = chessboard.get_possible_moves(square_data);
+				sample_possible_moves.forEach(function(possible_move){
+					all_possible_moves.push([square_data, possible_move]);
+				});
+			}
+		});
+		if (active.team==='0') {
+			var random_guess = all_possible_moves[Math.floor((Math.random()*all_possible_moves.length))];
+			show_possible_moves(random_guess[0]);
+			make_move(random_guess[1]);
+		}
+	};
 	return {
 		init: function() {
 			user_interface.reset_square_colors();
 			chessboard.initialize();
 			setup_event_listeners();
+			player2_moves();
 		}
 	};
 }(board_display, interface);
