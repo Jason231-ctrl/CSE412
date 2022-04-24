@@ -38,6 +38,7 @@ a:hover {
   	position: relative;
   	top: -10px;
   	border-bottom:2px solid;
+	  float: left;
 }
 
 #container {

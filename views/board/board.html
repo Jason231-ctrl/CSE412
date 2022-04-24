@@ -9,29 +9,36 @@
   </head>
   <body>
 	{% block content %}
-  <!-- Jason added -->
+  <!-- Jason added   Removed for now
 	<div id="onLoad">
 		<img src="/views/images/pawnDesignDash1.png" alt="onLoadImageTransition">
 	</div>
-	<!---->
+	-->
 
   	<div id="header">
+		<form action="/dashboard" method="GET">
+			<input type="submit" value="Dashboard">
+		</form>
 		<a href="/">Leaderboard</a>
   		<a href="/">History</a>
-  		<a href="/">New Player</a>
-  		<a href="/">New Game</a>
   		<a href="/">End Game</a>
+
+		<!-- Can be added in future.
+			<a href="/">New Player</a>
+  			<a href="/">New Game</a> 
+		-->
   	</div>
 
 	
     <center><h1>{{ board[0].board_status }}) {{ player.player_name }} vs {{ opponent.player_name }}</h1>
     
+	<!-- REMOVED:: Could be added in future.
     <div id="container">
     
         <div id="pieces">
         	<h2>Pieces Captured by {{ player.player_name }}</h2>
 
-    	</div>
+    	</div>-->
     
     
     <!---board start--->
@@ -415,13 +422,15 @@
    		</tr>
     </table>
     
-    <div id="pieces">
+    <!--<div id="pieces"> REMOVED:: Could be added in future
     	<h2>Pieces Captured by {{ opponent.player_name }}</h2>
-    </div>
+    </div> -->
     
     <!--end of container-->
     </div>
-    <center><button id="submit">Lock in Move</button></center>
+    <!--  Currently dont see the need for this at the moment.
+		<center><button id="submit">Lock in Move</button></center>
+	-->
 	<form action="/dashboard" method="GET">
 		<input type="submit" value="Dashboard">
 	</form>
