@@ -9,7 +9,7 @@ function continueLogin()
     document.getElementById("loginBack").classList.add("loginBackground");
     document.getElementById("profile").classList.add("profileEdits");
     document.getElementById("profilePicture").classList.add("profImg");
-    document.getElementById("username").classList.add("loginInput");
+    document.getElementById("player_name").classList.add("loginInput");
     document.getElementById("playerTransition").classList.add("playerTransitionAnimation");
     document.getElementById("login").classList.add("loginButton");
     document.getElementById("userCreationButton").classList.add("userCreationButtonAnimation");
