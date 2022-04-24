@@ -51,98 +51,354 @@
    		</tr>
    		<tr>
    			<th>8</th>
-    		<td id="A8"><img src="/views/board/piece_images/{{ board_imgs.a8 }}.png" data-available="{{ board_avail.a8 }}" alt="black rook" width="50" height="50"></td>
-    		<td id="B8"><img src="/views/board/piece_images/{{ board_imgs.b8 }}.png" data-available="{{ board_avail.b8 }}" alt="black horse" width="50" height="50"></td>
-    		<td id="C8"><img src="/views/board/piece_images/{{ board_imgs.c8 }}.png" data-available="{{ board_avail.c8 }}" alt="black bishop" width="50" height="50"></td>
-    		<td id="D8"><img src="/views/board/piece_images/{{ board_imgs.d8 }}.png" data-available="{{ board_avail.d8 }}" alt="black queen" width="50" height="50"></td>
-    		<td id="E8"><img src="/views/board/piece_images/{{ board_imgs.e8 }}.png" data-available="{{ board_avail.e8 }}" alt="black king" width="50" height="50"></td>
-    		<td id="F8"><img src="/views/board/piece_images/{{ board_imgs.f8 }}.png" data-available="{{ board_avail.f8 }}" alt="black bishop" width="50" height="50"></td>
-    		<td id="G8"><img src="/views/board/piece_images/{{ board_imgs.g8 }}.png" data-available="{{ board_avail.g8 }}" alt="black horse" width="50" height="50"></td>
-    		<td id="H8"><img src="/views/board/piece_images/{{ board_imgs.h8 }}.png" data-available="{{ board_avail.h8 }}" alt="black rook" width="50" height="50"></td>
+				<td id="A8">
+					<button class="square" id="row-0-column-0" data-team="{{ '' }}" data-turn="{{ '' }}" data-available="{{ '' }}">
+						<img src="/views/board/piece_images/{{ board_imgs.a8 }}.png" width="50" height="50">
+					</button>
+				</td>
+				<td id="B8">
+					<button class="square" id="row-0-column-1">
+						<img src="/views/board/piece_images/{{ board_imgs.b8 }}.png" width="50" height="50">
+					</button>
+				</td>
+				<td id="C8">
+					<button class="square" id="row-0-column-2">
+						<img src="/views/board/piece_images/{{ board_imgs.c8 }}.png" width="50" height="50">
+					</button>
+				</td>
+				<td id="D8">
+					<button class="square" id="row-0-column-3">
+						<img src="/views/board/piece_images/{{ board_imgs.d8 }}.png" width="50" height="50">
+					</button>
+				</td>
+				<td id="E8">
+					<button class="square" id="row-0-column-4">
+						<img src="/views/board/piece_images/{{ board_imgs.e8 }}.png" width="50" height="50">
+					</button>
+				</td>
+				<td id="F8">
+					<button class="square" id="row-0-column-5">
+						<img src="/views/board/piece_images/{{ board_imgs.f8 }}.png" width="50" height="50">
+					</button>
+				</td>
+				<td id="G8">
+					<button class="square" id="row-0-column-6">
+						<img src="/views/board/piece_images/{{ board_imgs.g8 }}.png" width="50" height="50">
+					</button>
+				</td>
+				<td id="H8">
+					<button class="square" id="row-0-column-7">
+						<img src="/views/board/piece_images/{{ board_imgs.h8 }}.png" width="50" height="50">
+					</button>
+				</td>
    			<th>8</th>
    		</tr>
    		<tr>
    			<th>7</th>
-    		<td id="A7"><img src="/views/board/piece_images/{{ board_imgs.a7 }}.png" data-available="{{ board_avail.a7 }}" alt="black pawn" width="50" height="50"></td>
-    		<td id="B7"><img src="/views/board/piece_images/{{ board_imgs.b7 }}.png" data-available="{{ board_avail.b7 }}" alt="black pawn" width="50" height="50"></td>
-    		<td id="C7"><img src="/views/board/piece_images/{{ board_imgs.c7 }}.png" data-available="{{ board_avail.c7 }}" alt="black pawn" width="50" height="50"></td>
-    		<td id="D7"><img src="/views/board/piece_images/{{ board_imgs.d7 }}.png" data-available="{{ board_avail.d7 }}" alt="black pawn" width="50" height="50"></td>
-    		<td id="E7"><img src="/views/board/piece_images/{{ board_imgs.e7 }}.png" data-available="{{ board_avail.e7 }}" alt="black pawn" width="50" height="50"></td>
-    		<td id="F7"><img src="/views/board/piece_images/{{ board_imgs.f7 }}.png" data-available="{{ board_avail.f7 }}" alt="black pawn" width="50" height="50"></td>
-    		<td id="G7"><img src="/views/board/piece_images/{{ board_imgs.g7 }}.png" data-available="{{ board_avail.g7 }}" alt="black pawn" width="50" height="50"></td>
-    		<td id="H7"><img src="/views/board/piece_images/{{ board_imgs.h7 }}.png" data-available="{{ board_avail.h7 }}" alt="black pawn" width="50" height="50"></td>
+			   <td id="A7">
+					<button class="square" id="row-1-column-0">
+						<img src="/views/board/piece_images/{{ board_imgs.a7 }}.png" data-available="{{ board_avail.a7 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="B7">
+					<button class="square" id="row-1-column-1">
+						<img src="/views/board/piece_images/{{ board_imgs.b7 }}.png" data-available="{{ board_avail.b7 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="C7">
+					<button class="square" id="row-1-column-2">
+						<img src="/views/board/piece_images/{{ board_imgs.c7}}.png" data-available="{{ board_avail.c7 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="D7">
+					<button class="square" id="row-1-column-3">
+						<img src="/views/board/piece_images/{{ board_imgs.d7 }}.png" data-available="{{ board_avail.d7 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="E7">
+					<button class="square" id="row-1-column-4">
+						<img src="/views/board/piece_images/{{ board_imgs.e7 }}.png" data-available="{{ board_avail.e7 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="F7">
+					<button class="square" id="row-1-column-5">
+						<img src="/views/board/piece_images/{{ board_imgs.f7 }}.png" data-available="{{ board_avail.f7 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="G7">
+					<button class="square" id="row-1-column-6">
+						<img src="/views/board/piece_images/{{ board_imgs.g7 }}.png" data-available="{{ board_avail.g7 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="H7">
+					<button class="square" id="row-1-column-7">
+						<img src="/views/board/piece_images/{{ board_imgs.h7 }}.png" data-available="{{ board_avail.h7 }}" width="50" height="50">
+					</button>
+				</td>
    			<th>7</th>
    		</tr>
    		<tr>
    			<th>6</th>
-    		<td id="A6"><img src="/views/board/piece_images/{{ board_imgs.a6 }}.png" data-available="{{ board_avail.a6 }}" width="50" height="50"></td>
-    		<td id="B6"><img src="/views/board/piece_images/{{ board_imgs.b6 }}.png" data-available="{{ board_avail.b6 }}" width="50" height="50"></td>
-    		<td id="C6"><img src="/views/board/piece_images/{{ board_imgs.c6 }}.png" data-available="{{ board_avail.c6 }}" width="50" height="50"></td>
-    		<td id="D6"><img src="/views/board/piece_images/{{ board_imgs.d6 }}.png" data-available="{{ board_avail.d6 }}" width="50" height="50"></td>
-    		<td id="E6"><img src="/views/board/piece_images/{{ board_imgs.e6 }}.png" data-available="{{ board_avail.e6 }}" width="50" height="50"></td>
-    		<td id="F6"><img src="/views/board/piece_images/{{ board_imgs.f6 }}.png" data-available="{{ board_avail.f6 }}" width="50" height="50"></td>
-    		<td id="G6"><img src="/views/board/piece_images/{{ board_imgs.g6 }}.png" data-available="{{ board_avail.g6 }}" width="50" height="50"></td>
-    		<td id="H6"><img src="/views/board/piece_images/{{ board_imgs.h6 }}.png" data-available="{{ board_avail.h6 }}" width="50" height="50"></td>
+			   <td id="A6">
+					<button class="square" id="row-2-column-0">
+						<img src="/views/board/piece_images/{{ board_imgs.a6 }}.png" data-available="{{ board_avail.a6 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="B6">
+					<button class="square" id="row-2-column-1">
+						<img src="/views/board/piece_images/{{ board_imgs.b6 }}.png" data-available="{{ board_avail.b6 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="C6">
+					<button class="square" id="row-2-column-2">
+						<img src="/views/board/piece_images/{{ board_imgs.c6 }}.png" data-available="{{ board_avail.c6 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="D6">
+					<button class="square" id="row-2-column-3">
+						<img src="/views/board/piece_images/{{ board_imgs.d6 }}.png" data-available="{{ board_avail.d6 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="E6">
+					<button class="square" id="row-2-column-4">
+						<img src="/views/board/piece_images/{{ board_imgs.e6 }}.png" data-available="{{ board_avail.e6 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="F6">
+					<button class="square" id="row-2-column-5">
+						<img src="/views/board/piece_images/{{ board_imgs.f6 }}.png" data-available="{{ board_avail.f6 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="G6">
+					<button class="square" id="row-2-column-6">
+						<img src="/views/board/piece_images/{{ board_imgs.g6 }}.png" data-available="{{ board_avail.g6 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="H6">
+					<button class="square" id="row-2-column-7">
+						<img src="/views/board/piece_images/{{ board_imgs.h6 }}.png" data-available="{{ board_avail.h6 }}" width="50" height="50">
+					</button>
+				</td>
    			<th>6</th>
    		</tr>
    		<tr>
    			<th>5</th>
-    		<td id="A5"><img src="/views/board/piece_images/{{ board_imgs.a5 }}.png" data-available="{{ board_avail.a5 }}" width="50" height="50"></td>
-    		<td id="B5"><img src="/views/board/piece_images/{{ board_imgs.b5 }}.png" data-available="{{ board_avail.b5 }}" width="50" height="50"></td>
-    		<td id="C5"><img src="/views/board/piece_images/{{ board_imgs.c5 }}.png" data-available="{{ board_avail.c5 }}" width="50" height="50"></td>
-    		<td id="D5"><img src="/views/board/piece_images/{{ board_imgs.d5 }}.png" data-available="{{ board_avail.d5 }}" width="50" height="50"></td>
-    		<td id="E5"><img src="/views/board/piece_images/{{ board_imgs.e5 }}.png" data-available="{{ board_avail.e5 }}" width="50" height="50"></td>
-    		<td id="F5"><img src="/views/board/piece_images/{{ board_imgs.f5 }}.png" data-available="{{ board_avail.f5 }}" width="50" height="50"></td>
-    		<td id="G5"><img src="/views/board/piece_images/{{ board_imgs.g5 }}.png" data-available="{{ board_avail.g5 }}" width="50" height="50"></td>
-    		<td id="H5"><img src="/views/board/piece_images/{{ board_imgs.h5 }}.png" data-available="{{ board_avail.h5 }}" width="50" height="50"></td>
+			   <td id="A5">
+					<button class="square" id="row-3-column-0">
+						<img src="/views/board/piece_images/{{ board_imgs.a5 }}.png" data-available="{{ board_avail.a5 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="B5">
+					<button class="square" id="row-3-column-1">
+						<img src="/views/board/piece_images/{{ board_imgs.b5 }}.png" data-available="{{ board_avail.b5 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="C5">
+					<button class="square" id="row-3-column-2">
+						<img src="/views/board/piece_images/{{ board_imgs.c5 }}.png" data-available="{{ board_avail.c5 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="D5">
+					<button class="square" id="row-3-column-3">
+						<img src="/views/board/piece_images/{{ board_imgs.d5 }}.png" data-available="{{ board_avail.d5 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="E5">
+					<button class="square" id="row-3-column-4">
+						<img src="/views/board/piece_images/{{ board_imgs.e5 }}.png" data-available="{{ board_avail.e5 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="F5">
+					<button class="square" id="row-3-column-5">
+						<img src="/views/board/piece_images/{{ board_imgs.f5 }}.png" data-available="{{ board_avail.f5 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="G5">
+					<button class="square" id="row-3-column-6">
+						<img src="/views/board/piece_images/{{ board_imgs.g5 }}.png" data-available="{{ board_avail.g5 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="H5">
+					<button class="square" id="row-3-column-7">
+						<img src="/views/board/piece_images/{{ board_imgs.h5 }}.png" data-available="{{ board_avail.h5 }}" width="50" height="50">
+					</button>
+				</td>
    			<th>5</th>
    		</tr>
    		<tr>
    			<th>4</th>
-    		<td id="A4"><img src="/views/board/piece_images/{{ board_imgs.a4 }}.png" data-available="{{ board_avail.a4 }}" width="50" height="50"></td>
-    		<td id="B4"><img src="/views/board/piece_images/{{ board_imgs.b4 }}.png" data-available="{{ board_avail.b4 }}" width="50" height="50"></td>
-    		<td id="C4"><img src="/views/board/piece_images/{{ board_imgs.c4 }}.png" data-available="{{ board_avail.c4 }}" width="50" height="50"></td>
-    		<td id="D4"><img src="/views/board/piece_images/{{ board_imgs.d4 }}.png" data-available="{{ board_avail.d4 }}" width="50" height="50"></td>
-    		<td id="E4"><img src="/views/board/piece_images/{{ board_imgs.e4 }}.png" data-available="{{ board_avail.e4 }}" width="50" height="50"></td>
-    		<td id="F4"><img src="/views/board/piece_images/{{ board_imgs.f4 }}.png" data-available="{{ board_avail.f4 }}" width="50" height="50"></td>
-    		<td id="G4"><img src="/views/board/piece_images/{{ board_imgs.g4 }}.png" data-available="{{ board_avail.g4 }}" width="50" height="50"></td>
-    		<td id="H4"><img src="/views/board/piece_images/{{ board_imgs.h4 }}.png" data-available="{{ board_avail.h4 }}" width="50" height="50"></td>
+			   <td id="A4">
+					<button class="square" id="row-4-column-0">
+						<img src="/views/board/piece_images/{{ board_imgs.a4 }}.png" data-available="{{ board_avail.a4 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="B4">
+					<button class="square" id="row-4-column-1">
+						<img src="/views/board/piece_images/{{ board_imgs.b4 }}.png" data-available="{{ board_avail.b4 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="C4">
+					<button class="square" id="row-4-column-2">
+						<img src="/views/board/piece_images/{{ board_imgs.c4 }}.png" data-available="{{ board_avail.c4 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="D4">
+					<button class="square" id="row-4-column-3">
+						<img src="/views/board/piece_images/{{ board_imgs.d4 }}.png" data-available="{{ board_avail.d4 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="E4">
+					<button class="square" id="row-4-column-4">
+						<img src="/views/board/piece_images/{{ board_imgs.e4 }}.png" data-available="{{ board_avail.e4 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="F4">
+					<button class="square" id="row-4-column-5">
+						<img src="/views/board/piece_images/{{ board_imgs.f4 }}.png" data-available="{{ board_avail.f4 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="G4">
+					<button class="square" id="row-4-column-6">
+						<img src="/views/board/piece_images/{{ board_imgs.g4 }}.png" data-available="{{ board_avail.g4 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="H4">
+					<button class="square" id="row-4-column-7">
+						<img src="/views/board/piece_images/{{ board_imgs.h4 }}.png" data-available="{{ board_avail.h4 }}" width="50" height="50">
+					</button>
+				</td>
    			<th>4</th>
    		</tr>
    		<tr>
    			<th>3</th>
-    		<td id="A3"><img src="/views/board/piece_images/{{ board_imgs.a3 }}.png" data-available="{{ board_avail.a3 }}" width="50" height="50"></td>
-    		<td id="B3"><img src="/views/board/piece_images/{{ board_imgs.b3 }}.png" data-available="{{ board_avail.b3 }}" width="50" height="50"></td>
-    		<td id="C3"><img src="/views/board/piece_images/{{ board_imgs.c3 }}.png" data-available="{{ board_avail.c3 }}" width="50" height="50"></td>
-    		<td id="D3"><img src="/views/board/piece_images/{{ board_imgs.d3 }}.png" data-available="{{ board_avail.d3 }}" width="50" height="50"></td>
-    		<td id="E3"><img src="/views/board/piece_images/{{ board_imgs.e3 }}.png" data-available="{{ board_avail.e3 }}" width="50" height="50"></td>
-    		<td id="F3"><img src="/views/board/piece_images/{{ board_imgs.f3 }}.png" data-available="{{ board_avail.f3 }}" width="50" height="50"></td>
-    		<td id="G3"><img src="/views/board/piece_images/{{ board_imgs.g3 }}.png" data-available="{{ board_avail.g3 }}" width="50" height="50"></td>
-    		<td id="H3"><img src="/views/board/piece_images/{{ board_imgs.h3 }}.png" data-available="{{ board_avail.h3 }}" width="50" height="50"></td>
+			   <td id="A3">
+					<button class="square" id="row-5-column-0">
+						<img src="/views/board/piece_images/{{ board_imgs.a3 }}.png" data-available="{{ board_avail.a3 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="B3">
+					<button class="square" id="row-5-column-1">
+						<img src="/views/board/piece_images/{{ board_imgs.b3 }}.png" data-available="{{ board_avail.b3 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="C3">
+					<button class="square" id="row-5-column-2">
+						<img src="/views/board/piece_images/{{ board_imgs.c3 }}.png" data-available="{{ board_avail.c3 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="D3">
+					<button class="square" id="row-5-column-3">
+						<img src="/views/board/piece_images/{{ board_imgs.d3 }}.png" data-available="{{ board_avail.d3 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="E3">
+					<button class="square" id="row-5-column-4">
+						<img src="/views/board/piece_images/{{ board_imgs.e3 }}.png" data-available="{{ board_avail.e3 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="F3">
+					<button class="square" id="row-5-column-5">
+						<img src="/views/board/piece_images/{{ board_imgs.f3 }}.png" data-available="{{ board_avail.f3 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="G3">
+					<button class="square" id="row-5-column-6">
+						<img src="/views/board/piece_images/{{ board_imgs.g3 }}.png" data-available="{{ board_avail.g3 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="H3">
+					<button class="square" id="row-5-column-7">
+						<img src="/views/board/piece_images/{{ board_imgs.h3 }}.png" data-available="{{ board_avail.h3 }}" width="50" height="50">
+					</button>
+				</td>
    			<th>3</th>
    		</tr>
    		<tr>
    			<th>2</th>
-			<td id="A2"><img src="/views/board/piece_images/{{ board_imgs.a2 }}.png" data-available="{{ board_avail.a2 }}" alt="white pawn" width="50" height="50"></td>
-    		<td id="B2"><img src="/views/board/piece_images/{{ board_imgs.b2 }}.png" data-available="{{ board_avail.b2 }}" alt="white pawn" width="50" height="50"></td>
-    		<td id="C2"><img src="/views/board/piece_images/{{ board_imgs.c2 }}.png" data-available="{{ board_avail.c2 }}" alt="white pawn" width="50" height="50"></td>
-    		<td id="D2"><img src="/views/board/piece_images/{{ board_imgs.d2 }}.png" data-available="{{ board_avail.d2 }}" alt="white pawn" width="50" height="50"></td>
-    		<td id="E2"><img src="/views/board/piece_images/{{ board_imgs.e2 }}.png" data-available="{{ board_avail.e2 }}" alt="white pawn" width="50" height="50"></td>
-    		<td id="F2"><img src="/views/board/piece_images/{{ board_imgs.f2 }}.png" data-available="{{ board_avail.f2 }}" alt="white pawn" width="50" height="50"></td>
-    		<td id="G2"><img src="/views/board/piece_images/{{ board_imgs.g2 }}.png" data-available="{{ board_avail.g2 }}" alt="white pawn" width="50" height="50"></td>
-    		<td id="H2"><img src="/views/board/piece_images/{{ board_imgs.h2 }}.png" data-available="{{ board_avail.h2 }}" alt="white pawn" width="50" height="50"></td>
+			   <td id="A2">
+					<button class="square" id="row-6-column-0">
+						<img src="/views/board/piece_images/{{ board_imgs.a2 }}.png" data-available="{{ board_avail.a2 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="B2">
+					<button class="square" id="row-6-column-1">
+						<img src="/views/board/piece_images/{{ board_imgs.b2 }}.png" data-available="{{ board_avail.b2 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="C2">
+					<button class="square" id="row-6-column-2">
+						<img src="/views/board/piece_images/{{ board_imgs.c2 }}.png" data-available="{{ board_avail.c2 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="D2">
+					<button class="square" id="row-6-column-3">
+						<img src="/views/board/piece_images/{{ board_imgs.d2 }}.png" data-available="{{ board_avail.d2 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="E2">
+					<button class="square" id="row-6-column-4">
+						<img src="/views/board/piece_images/{{ board_imgs.e2 }}.png" data-available="{{ board_avail.e2 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="F2">
+					<button class="square" id="row-6-column-5">
+						<img src="/views/board/piece_images/{{ board_imgs.f2 }}.png" data-available="{{ board_avail.f2 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="G2">
+					<button class="square" id="row-6-column-6">
+						<img src="/views/board/piece_images/{{ board_imgs.g2 }}.png" data-available="{{ board_avail.g2 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="H2">
+					<button class="square" id="row-6-column-7">
+						<img src="/views/board/piece_images/{{ board_imgs.h2 }}.png" data-available="{{ board_avail.h2 }}" width="50" height="50">
+					</button>
+				</td>
    			<th>2</th>
    		</tr>
    		<tr>
    			<th>1</th>
-    		<td id="A1"><img src="/views/board/piece_images/{{ board_imgs.a1 }}.png" data-available="{{ board_avail.a1 }}" alt="white rook" width="50" height="50"></td>
-    		<td id="B1"><img src="/views/board/piece_images/{{ board_imgs.b1 }}.png" data-available="{{ board_avail.b1 }}" alt="white horse" width="50" height="50"></td>
-    		<td id="C1"><img src="/views/board/piece_images/{{ board_imgs.c1 }}.png" data-available="{{ board_avail.c1 }}" alt="white bishop" width="50" height="50"></td>
-    		<td id="D1"><img src="/views/board/piece_images/{{ board_imgs.d1 }}.png" data-available="{{ board_avail.d1 }}" alt="white queen" width="50" height="50"></td>
-    		<td id="E1"><img src="/views/board/piece_images/{{ board_imgs.e1 }}.png" data-available="{{ board_avail.e1 }}" alt="white king" width="50" height="50"></td>
-    		<td id="F1"><img src="/views/board/piece_images/{{ board_imgs.f1 }}.png" data-available="{{ board_avail.f1 }}" alt="white bishop" width="50" height="50"></td>
-    		<td id="G1"><img src="/views/board/piece_images/{{ board_imgs.g1 }}.png" data-available="{{ board_avail.g1 }}" alt="white horse" width="50" height="50"></td>
-    		<td id="H1"><img src="/views/board/piece_images/{{ board_imgs.h1 }}.png" data-available="{{ board_avail.h1 }}" alt="white rook" width="50" height="50"></td>
+			   <td id="A1">
+					<button class="square" id="row-7-column-0">
+						<img src="/views/board/piece_images/{{ board_imgs.a1 }}.png" data-available="{{ board_avail.a1 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="B1">
+					<button class="square" id="row-7-column-1">
+						<img src="/views/board/piece_images/{{ board_imgs.b1 }}.png" data-available="{{ board_avail.b1 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="C1">
+					<button class="square" id="row-7-column-2">
+						<img src="/views/board/piece_images/{{ board_imgs.c1 }}.png" data-available="{{ board_avail.c1 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="D1">
+					<button class="square" id="row-7-column-3">
+						<img src="/views/board/piece_images/{{ board_imgs.d1 }}.png" data-available="{{ board_avail.d1 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="E1">
+					<button class="square" id="row-7-column-4">
+						<img src="/views/board/piece_images/{{ board_imgs.e1 }}.png" data-available="{{ board_avail.e1 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="F1">
+					<button class="square" id="row-7-column-5">
+						<img src="/views/board/piece_images/{{ board_imgs.f1 }}.png" data-available="{{ board_avail.f1 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="G1">
+					<button class="square" id="row-7-column-6">
+						<img src="/views/board/piece_images/{{ board_imgs.g1 }}.png" data-available="{{ board_avail.g1 }}" width="50" height="50">
+					</button>
+				</td>
+				<td id="H1">
+					<button class="square" id="row-7-column-7">
+						<img src="/views/board/piece_images/{{ board_imgs.h1 }}.png" data-available="{{ board_avail.h1 }}" width="50" height="50">
+					</button>
+				</td>
    			<th>1</th>
    		</tr>
    		<tr>

@@ -2,7 +2,7 @@
 body {
 	width: 100%;
 	font-family: Arial;
-	pointer-events: none;
+	/* pointer-events: none; */
 	background: linear-gradient(#B0A7A2, #CAEEF5);
 }
 
@@ -119,6 +119,11 @@ button:hover {
 	scale: 300;
 	animation: onLoadTransition ease-out 1s;
     animation-fill-mode: forwards;
+}
+
+/* Anthony */
+button.square {
+	background-color: rgba(255,255,255,0);
 }
 
 @keyframes onLoadTransition
