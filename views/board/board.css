@@ -220,6 +220,24 @@ button:hover {
     animation-fill-mode: forwards;
 }
 
+#logoImg
+{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    z-index: 1001;
+}
+
+#logoIcon
+{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    height: 44px;
+    width: 44px;
+    z-index: 1001;
+}
+
 /* Anthony */
 button.square {
 	background-color: rgba(255,255,255,0);
