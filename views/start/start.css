@@ -264,9 +264,9 @@ section .row div
     border-radius: 20px;
     font-size: 1.3rem;
     font-family: 'Montserrat', sans-serif;
-    animation: halfGlow 2s linear;
+    /*animation: halfGlow 2s linear;
     animation-delay: 5s;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards;*/
 }
 
 .userCreationButtonAnimation:hover
