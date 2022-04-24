@@ -12,6 +12,7 @@
     "body-parser": "^1.20.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "dependencies": "^0.0.1",
     "express": "^4.17.3",
     "method-override": "^3.0.0",
     "nunjucks": "^3.2.3",

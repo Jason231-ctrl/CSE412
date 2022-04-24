@@ -732,6 +732,7 @@ router.post('/boards', async (req, res) => {
             'isturn': 1
         });
     } catch (err) {
+        res.redirect('/');
         console.error(err.message);
     }
 });
@@ -1037,6 +1038,7 @@ router.get('/boards/:id', async (req, res) => {
         });
         
     } catch (err) {
+        res.redirect('/');
         console.error(err.message);
     }
 });
@@ -1372,6 +1374,7 @@ router.get('/dashboard', async (req, res) => {
             'boards': boards.rows
         });
     } catch (err) {
+        res.redirect('/');
         console.error(err.message);
     }
 });
@@ -1380,9 +1383,14 @@ router.get('/dashboard', async (req, res) => {
 router.get('/board', async (req, res) => {
     // this should be a board call instead, but gotta handle error-handling of choosing/creating boards
     // i think this is assuming new game against computer is chosen
-    const player1 = await pool.query('SELECT * FROM player WHERE player_id = $1;', [req.cookies.player.player_id]);
-    const player2 = await pool.query('SELECT * FROM player WHERE player_id = $1;', [req.cookies.opponent.player_id]);
-    res.render('board/board', {'player': player1.rows[0], 'opponent': player2.rows[0]});
+    try{
+        const player1 = await pool.query('SELECT * FROM player WHERE player_id = $1;', [req.cookies.player.player_id]);
+        const player2 = await pool.query('SELECT * FROM player WHERE player_id = $1;', [req.cookies.opponent.player_id]);
+        res.render('board/board', {'player': player1.rows[0], 'opponent': player2.rows[0]});
+    } catch(err){
+        res.redirect('/');
+        console.log(err);
+    }
 });
 
 // START PAGE
