@@ -248,6 +248,10 @@ section .row div
 }
 */
 
+#userCreationButton{
+    visibility: hidden;
+}
+
 .userCreationButtonAnimation
 {
     opacity: 0;
@@ -341,6 +345,32 @@ section .row div
     font-size: 1.8rem;
 }
 
+
+#loginButton{
+    width: 180px;
+    height: 55px;
+    margin: 0 15px;
+    perspective: 1000px;
+    height: 55px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 19px;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    background: #000;
+    transform: translateY(-25px);
+}
+
+#loginButton:hover{
+    background-color: whitesmoke;
+    color: black;
+}
 /*-------Used Online-------*/
 span{
     position: relative;

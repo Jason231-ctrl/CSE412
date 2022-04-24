@@ -29,7 +29,7 @@ function nextScreen()
         document.getElementById("bottom").classList.add("bottomIntroAnimation");
         setTimeout(() => {
             window.open("/dashboard", "_self");
-        },1200);
+        },2000);
     }
     else{
         document.getElementById("noUserFound").style.visibility = "visible";
