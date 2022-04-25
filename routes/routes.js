@@ -732,6 +732,7 @@ router.post('/boards', async (req, res) => {
             'isturn': 1
         });
     } catch (err) {
+        //This makes cookies needed inorder to continue forward
         res.redirect('/');
         console.error(err.message);
     }
