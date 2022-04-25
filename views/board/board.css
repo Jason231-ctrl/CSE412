@@ -255,3 +255,18 @@ button.square {
 		scale: 0;
 	}
 }
+
+#exit
+{
+    position: absolute;
+    opacity: 0;
+    top: 2%;
+    right: 2%;
+    height: 44px;
+    width: 44px;
+    border-radius: 0px;
+    background-color: whitesmoke;
+    text-align: center;
+    z-index: 1005;
+    
+}
