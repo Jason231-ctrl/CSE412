@@ -1109,7 +1109,8 @@ router.post('/boards/:id', async (req, res) => {
             ;`,
             [board_id]
        );
-       if (living_kings.rows[0].num_alive === 1) {
+       if (living_kings.rows[0].num_alive == 1) {
+
            const board_status = await pool.query(
                `select
                     plays_in.player_id,
@@ -1138,6 +1139,10 @@ router.post('/boards/:id', async (req, res) => {
                     board_id = $1
                 ;`,
                [board_id, board_status.rows[0].status]
+           );
+           const check_status = await pool.query(
+                `select * from board where board_id = $1`,
+                [board_id]
            );
        }
        /* if no moves are possible for either choose a winner */
