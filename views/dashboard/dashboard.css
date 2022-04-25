@@ -241,3 +241,18 @@ section .row div
     width: 44px;
     z-index: 101;
 }
+
+#newGameBack{
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 180px;
+    width: 180px;
+    border-radius: 30px;
+    background-color: whitesmoke;
+    box-shadow: 0px 12px 0px 0px gray;
+    text-align: center;
+    z-index: 1005;
+}
