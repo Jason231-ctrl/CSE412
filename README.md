@@ -5,7 +5,7 @@ Review Chess Manual PDF or go to this link
 https://docs.google.com/document/d/1MKUd4j5_wOJFWQdN1WMxHUvzTUGFWVBUT1HuniXgjV4/edit?usp=sharing
 
 Youtube video walkthrough/setup found here (RECOMMENDED):
-https://youtu.be/gBf70OvNwvI
+- https://youtu.be/gBf70OvNwvI -
 - skip to 2:31 for the setup -
 
 ## About this project
