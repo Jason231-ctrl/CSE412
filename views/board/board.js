@@ -2,10 +2,8 @@ if(document.getElementById("matchTitle").textContent == "p1wins) " + document.ge
 	document.getElementById("matchTitle").textContent = "You won!"
 }
 
-document.getElementById("logoImg").addEventListener("click", tested);
-function tested()
-{
-    alert(document.getElementById("playerName").textContent);
+if(document.getElementById("matchTitle").textContent == "p2wins) " + document.getElementById("playerName").textContent +" vs COMPUTER"){
+	document.getElementById("matchTitle").textContent = "You Lost!"
 }
 
 // helper functions
