@@ -4,6 +4,9 @@
 Review Chess Manual PDF or go to this link
 https://docs.google.com/document/d/1MKUd4j5_wOJFWQdN1WMxHUvzTUGFWVBUT1HuniXgjV4/edit?usp=sharing
 
+Youtube video walkthrough/setup found here:
+https://youtu.be/gBf70OvNwvI
+
 ## About this project
 This is a working node app using the start/board frontend templates. It also includes a working (although not very helpful) API for the player DB table. 
 
