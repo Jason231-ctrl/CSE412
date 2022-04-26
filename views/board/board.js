@@ -1,4 +1,12 @@
+if(document.getElementById("matchTitle").textContent == "p1wins) " + document.getElementById("playerName").textContent +" vs COMPUTER"){
+	document.getElementById("matchTitle").textContent = "You won!"
+}
 
+document.getElementById("logoImg").addEventListener("click", tested);
+function tested()
+{
+    alert(document.getElementById("playerName").textContent);
+}
 
 // helper functions
 var is_move_inside_board = function(move_data) {return move_data.row <= 7 && move_data.column <= 7 && move_data.row >= 0 && move_data.column >= 0;}

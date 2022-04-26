@@ -270,3 +270,7 @@ button.square {
     z-index: 1005;
     
 }
+
+#playerName{
+	visibility: hidden;
+}
