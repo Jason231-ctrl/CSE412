@@ -1,9 +1,11 @@
 if(document.getElementById("matchTitle").textContent == "p1wins) " + document.getElementById("playerName").textContent +" vs COMPUTER"){
-	document.getElementById("matchTitle").textContent = "You won!"
+	document.getElementById("resultText").textContent = "You won!"
+	document.getElementById("resultScreen").classList.add("resultAnimation");
 }
 
 if(document.getElementById("matchTitle").textContent == "p2wins) " + document.getElementById("playerName").textContent +" vs COMPUTER"){
-	document.getElementById("matchTitle").textContent = "You Lost!"
+	document.getElementById("resultText").textContent = "You Lost!"
+	document.getElementById("resultScreen").classList.add("resultAnimation");
 }
 
 // helper functions

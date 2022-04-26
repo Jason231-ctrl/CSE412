@@ -112,7 +112,7 @@ a:hover {
 	top: 3%;
     left: 50%;
     transform: translateX(-50%);
-	z-index: 1000;
+	z-index: 2000;
 }
 
 #boardBack{
@@ -273,4 +273,38 @@ button.square {
 
 #playerName{
 	visibility: hidden;
+}
+
+#resultScreen{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -42.5%);
+	height: 450px;
+	width: 450px;
+    z-index: 1001;
+	border-radius: 25px;
+	text-align: center;
+	background-color: wheat;
+	scale: 0;
+}
+
+#resultText
+{
+	position: relative;
+	padding-top: 50%;
+	font-size: 5rem;
+}
+
+.resultAnimation{
+	animation: popup 1.5s forwards;
+}
+
+@keyframes popup {
+	0%{
+		scale: 0;
+	}
+	100%{
+		scale: 1;
+	}
 }
