@@ -1,9 +1,9 @@
 
 module.exports = {
-    user: "jasonleong",
-    password: "05100805",
-    host: "localhost",
+    user: "", //enter your postgres user
+    password: "", //enter your postgres password
+    host: "",
     port: 5432,
-    database: "chessdb"
+    database: "" //enter the name of the created database
 };
 
